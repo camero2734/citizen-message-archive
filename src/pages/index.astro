@@ -2,6 +2,17 @@
 import Card, { type Props as CardProps } from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
 
+// Create last updated date in format
+const lastUpdated = new Date().toLocaleString('en-GB', {
+	day: '2-digit',
+	month: 'long',
+	year: 'numeric',
+	hour: '2-digit',
+	minute: '2-digit',
+	second: '2-digit',
+	timeZoneName: 'short',
+});
+
 const cardData: CardProps[] = [
 	{
 		number: "001",
@@ -39,10 +50,11 @@ for (const card of cardData) {
 	<main>
 		<h1>Citizen <span class="text-gradient">Message Archive</span></h1>
 		<aside class="disclaimer">
-			<p>Welcome to the Digital Encrypted Message Archive, an unofficial archive of messages from citizens across Dema.</p>
+			<p>Welcome to the <span class="dema">Digital Encrypted Message Archive</span>, an unofficial archive of messages from citizens across Dema.</p>
+			<p class="last-updated">Last updated: {lastUpdated}</p>
 		</aside>
 
-		<h2 class="list-heading">Collected clues</h2>
+		<h2 class="list-heading" id="collected-clues">Collected clues</h2>
 
 		<ol class="clues">
 			{clues.map((clue) => (
@@ -52,7 +64,7 @@ for (const card of cardData) {
 			))}
 		</ol>
 
-		<h2 class="list-heading">Most recent letters</h2>
+		<h2 class="list-heading" id="most-recent">Most recent letters</h2>
 		<ol class="list">
 			{cardData.sort((a, b) => b.date.getTime() - a.date.getTime()).map((card) => (
 				<Card {...card} />
@@ -97,26 +109,29 @@ for (const card of cardData) {
 	.clues a {
 		color: inherit;
 		font-weight: bold;
-		/* text-decoration: 3px solid rgb(var(--accent-light)) underline; */
 	}
 
 	.list {
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
+		padding: 0;
+		margin: 0;
 	}
 
 	.list-heading {
 		font-size: inherit;
-		opacity: 0.3;
-		padding-left: 2em;
+		color: #777;
+		/* padding-left: 2em; */
 		padding-bottom: 0;
+		padding-top: 1.5em;
 	}
 
 	.disclaimer {
-		opacity: 0.3;
+		color: #777;
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		align-items: center;
 		margin: 0;
 		padding: 0;
 		text-align: center;
@@ -124,5 +139,15 @@ for (const card of cardData) {
 
 	.disclaimer p {
 		max-width: 600px;
+		margin-bottom: 0;
+	}
+
+	.last-updated {
+		font-size: 0.8em;
+	}
+
+	.dema {
+		font-weight: bold;
+		color: #999;
 	}
 </style>

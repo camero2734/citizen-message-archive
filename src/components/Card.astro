@@ -16,14 +16,41 @@ if (!image) {
 	throw new Error(`Image not found for clue ${number}`);
 }
 
-// Format date as 04 September 2021
 const formattedDate = new Intl.DateTimeFormat('en-GB', {
 	day: '2-digit',
 	month: 'long',
 	year: 'numeric',
 }).format(date);
 
-const textLines = text.split('\n').map((line) => (line ? line : "​"));
+interface TextPiece {
+	type: "p" | "span" | "br";
+	text: string;
+}
+
+let textPieces: TextPiece[] = [];
+text.split('\n').forEach((line) => {
+	const split = line.split(/([A-Z])\1{1}/);
+
+	for (const piece of split) {
+		// console.log({piece});
+		if (piece.length === 1) {
+			textPieces.push({
+				type: "span",
+				text: piece,
+			});
+		} else if (piece) {
+			textPieces.push({
+				type: "p",
+				text: piece,
+			});
+		}
+	}
+
+	textPieces.push({
+		type: "br",
+		text: "",
+	});
+});
 
 ---
 
@@ -36,8 +63,16 @@ const textLines = text.split('\n').map((line) => (line ? line : "​"));
 	</header>
 	<Image class="image" src={image()} alt={text} />
 	<div class="text">
-		{textLines.map((line) => (
+		<!-- {textLines.map((line) => (
 			<p>{line}</p>
+		))} -->
+
+		{textPieces.map((piece) => (
+			piece.type === "p"
+				? <p>{piece.text}</p>
+				: piece.type === "br" 
+					? <br />
+					: <span class="double">{piece.text}{piece.text}</span>
 		))}
 	</div>
 </li>
@@ -93,6 +128,7 @@ const textLines = text.split('\n').map((line) => (line ? line : "​"));
 	}
 
 	.text p {
+		display: inline;
 		margin-top: 0;
 		margin-bottom: 0;
 		opacity: 0.75;
@@ -111,5 +147,16 @@ const textLines = text.split('\n').map((line) => (line ? line : "​"));
 
 		background-size: 400%;
 		border-radius: 5px;
+	}
+
+	.double {
+		font-weight: bold;
+
+		/* background: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent; */
+		/* background-size: 400%;
+		background-position: 0%; */
+		filter: drop-shadow(2px 2px rgb(var(--accent)));
 	}
 </style>
