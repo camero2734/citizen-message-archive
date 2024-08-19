@@ -1,58 +1,63 @@
 ---
 import Card, { type Props as CardProps } from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
-import img001 from '../images/001.jpg'
-import img008 from '../images/008.png'
-import img027 from '../images/027.png'
+// import img001 from '../images/001.png'
+// import img008 from '../images/008.png'
+// import img027 from '../images/027.png'
 
 const cardData: CardProps[] = [
 	{
-		image: img001,
 		number: "001",
-		text: "Dear Eliot, I am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others cannot see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the [...] forces of the bishops - a whisper [...]",
+		text: "Dear Eliot,\nI am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others cannot see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the [...] forces of the bishops - a whisper [...]",
 		clue: "WEM",
 		date: new Date("2024-08-15"),
 	},
 	{
-		image: img008,
 		number: "008",
-		text: "??",
+		text: "You're right, the only glorious guest (quest?) left is beyond these walls. Clancy has exposed cracks that I am now ready to break open. We have to act fast, before the bishops have a chance to react. I aMM willing to take the risk and stand OOn the side of tRRuth.\n\nSahlo,\nJansen",
 		clue: "MOR",
 		date: new Date("2024-08-16"),
 	},
 	{
-		image: img027,
 		number: "027",
 		text: "Dear Karta,\nIf you only knew how long I spend washing my hands you woulDD know how embarrassed I am. They don't want anyone to know what we do down here. There were even laws written about what we inhale, and how deeply our skin gets stained. But you must be the baker -- the sleuth whOO found me out. [...] right - it's an odd [...] cellar. Manipulating [...]",
 		clue: "DO",
 		date: new Date("2024-08-18"),
 	},
-]
+].sort((a, b) => +a.number - +b.number);
+const clues = [];
+
+let lastNumber = 0;
+for (const card of cardData) {
+	const number = +card.number;
+	if (lastNumber + 1 !== number) clues.push("??");
+
+	clues.push(card);
+	lastNumber = number;
+}
 
 ---
 
-<Layout title="Citizen Report">
+<Layout title="Digital Encrypted Message Archive">
 	<main>
-		<h1>Welcome, <span class="text-gradient">Citizens</span></h1>
-		
+		<h1>Citizen <span class="text-gradient">Message Archive</span></h1>
+		<aside class="disclaimer">
+			<p>Welcome to the Digital Encrypted Message Archive, an unofficial archive of messages from citizens across Dema.</p>
+		</aside>
+
+		<h2 class="list-heading">Collected clues</h2>
+
 		<ol class="clues">
-			<li><a href="#001">WEM</a></li>
-			<li>??</li>
-			<li><a href="#008">MOR</a></li>
-			<li>??</li>
-			<li><a href="#027">DO</a></li>
-			<li>??</li>
+			{clues.map((clue) => (
+				typeof clue === "string"
+					? <li>{clue}</li>
+					: <li><a href={`#${clue.number}`}>{clue.clue}</a></li>
+			))}
 		</ol>
 
-		<ol>
-			<!-- <Card
-				image={img001}
-				number="001"
-				text="Dear Eliot, I am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others cannot see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the [...] forces of the bishops - a whisper [...]"
-				clue="WEM"
-				date={new Date(2024, 8, 15)} 
-			/> -->
-			{cardData.map((card) => (
+		<h2 class="list-heading">Most recent letters</h2>
+		<ol class="list">
+			{cardData.sort((a, b) => b.date.getTime() - a.date.getTime()).map((card) => (
 				<Card {...card} />
 			))}
 		</ol>
@@ -67,14 +72,14 @@ const cardData: CardProps[] = [
 		max-width: calc(100% - 2rem);
 		color: white;
 		font-size: 20px;
-		line-height: 1.6;
+		line-height: 1.5;
 	}
 	h1 {
 		font-size: 4rem;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;
-		margin-bottom: 1em;
+		margin-bottom: 0;
 	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
@@ -95,6 +100,32 @@ const cardData: CardProps[] = [
 	.clues a {
 		color: inherit;
 		font-weight: bold;
-		text-decoration: 3px solid rgb(var(--accent-light)) underline;
+		/* text-decoration: 3px solid rgb(var(--accent-light)) underline; */
+	}
+
+	.list {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+	}
+
+	.list-heading {
+		font-size: inherit;
+		opacity: 0.3;
+		padding-left: 2em;
+		padding-bottom: 0;
+	}
+
+	.disclaimer {
+		opacity: 0.3;
+		display: flex;
+		justify-content: center;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	.disclaimer p {
+		max-width: 600px;
 	}
 </style>

@@ -3,13 +3,19 @@ import { Image } from 'astro:assets';
 
 export interface Props {
 	date: Date;
-	image: ImageMetadata;
 	text: string;
 	clue: string;
 	number: string;
 }
 
-const { image, text, date, clue, number } = Astro.props;
+const { text, date, clue, number } = Astro.props;
+
+// TODO: This runs for every card.
+const images = import.meta.glob<{ default: ImageMetadata }>(`../images/*`);
+const image = images[`../images/${number}.png`] || images[`../images/${number}.jpg`];
+if (!image) {
+	throw new Error(`Image not found for clue ${number}`);
+}
 
 // Format date as 04 September 2021
 const formattedDate = new Intl.DateTimeFormat('en-GB', {
@@ -18,17 +24,23 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
 	year: 'numeric',
 }).format(date);
 
+const textLines = text.split('\n').map((line) => (line ? line : "​"));
+
 ---
 
 <li class="link-card" id={number}>
 	<h2>{number}</h2>
 	<header>
-		<p class="clue">{clue}</p>
+		<p class="date">📆 {formattedDate}</p>
 		<p>-</p>
-		<p class="date">{formattedDate}</p>
+		<p class="clue-s">🧩 <span class="clue">{clue}</span></span></p>
 	</header>
-	<Image class="image" src={image} alt={text} />
-	<p>{text}</p>
+	<Image class="image" src={image()} alt={text} />
+	<div class="text">
+		{textLines.map((line) => (
+			<p>{line}</p>
+		))}
+	</div>
 </li>
 <style>
 	.link-card {
@@ -50,18 +62,18 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
 	.image {
 		max-width: 400px;
 		height: auto;
+		margin-bottom: 2em;
 	}
 
 	.date {
 		font-weight: bold;
 		color: white;
 		margin-bottom: 1em;
-		text-decoration: 3px solid rgb(var(--accent)) underline;
 	}
 
 	.clue {
 		font-weight: bold;
-		text-decoration: 3px solid rgb(var(--accent-light)) underline;
+		/* text-decoration: 3px solid rgb(var(--accent-light)) underline; */
 	}
 
 	header {
@@ -72,6 +84,20 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
 
 	header p {
 		display: block;
+	}
+
+	.text {
+		padding-left: 1em;
+
+		border: 1px solid rgb(var(--accent-dark));
+		border-width: 0 0 0 0.25em;
+		border-image: var(--accent-gradient) 1;
+	}
+
+	.text p {
+		margin-top: 0;
+		margin-bottom: 0;
+		opacity: 0.75;
 	}
 
 	h2 {
