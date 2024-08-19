@@ -32,7 +32,6 @@ text.split('\n').forEach((line) => {
 	const split = line.split(/([A-Z])\1{1}/);
 
 	for (const piece of split) {
-		// console.log({piece});
 		if (piece.length === 1) {
 			textPieces.push({
 				type: "span",
@@ -63,10 +62,6 @@ text.split('\n').forEach((line) => {
 	</header>
 	<Image class="image" src={image()} alt={text} />
 	<div class="text">
-		<!-- {textLines.map((line) => (
-			<p>{line}</p>
-		))} -->
-
 		{textPieces.map((piece) => (
 			piece.type === "p"
 				? <p>{piece.text}</p>
