@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { images } from '../helpers/images';
 
 export interface Props {
 	date: Date;
@@ -10,8 +11,6 @@ export interface Props {
 
 const { text, date, clue, number } = Astro.props;
 
-// TODO: This runs for every card.
-const images = import.meta.glob<{ default: ImageMetadata }>(`../images/*`);
 const image = images[`../images/${number}.png`] || images[`../images/${number}.jpg`];
 if (!image) {
 	throw new Error(`Image not found for clue ${number}`);
@@ -73,7 +72,6 @@ const textLines = text.split('\n').map((line) => (line ? line : "​"));
 
 	.clue {
 		font-weight: bold;
-		/* text-decoration: 3px solid rgb(var(--accent-light)) underline; */
 	}
 
 	header {
@@ -105,22 +103,13 @@ const textLines = text.split('\n').map((line) => (line ? line : "​"));
 		font-weight: bold;
 		color: white;
 		margin-bottom: 0;
-
 		text-shadow: 0 0 5px rgba(0, 0, 0, 1);
-
 		padding: 4px;
 
 		background:
 			var(--accent-gradient) rgba(0, 0, 0, 0.9) ;
 
 		background-size: 400%;
-
 		border-radius: 5px;
-
-		/* background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%; */
 	}
 </style>
