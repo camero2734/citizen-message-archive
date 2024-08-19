@@ -1,29 +1,44 @@
 ---
-interface Props {
-	title: string;
-	body: string;
-	href: string;
+import { Image } from 'astro:assets';
+
+export interface Props {
+	date: Date;
+	image: ImageMetadata;
+	text: string;
+	clue: string;
+	number: string;
 }
 
-const { href, title, body } = Astro.props;
+const { image, text, date, clue, number } = Astro.props;
+
+// Format date as 04 September 2021
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+	day: '2-digit',
+	month: 'long',
+	year: 'numeric',
+}).format(date);
+
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+<li class="link-card" id={number}>
+	<h2>{number}</h2>
+	<header>
+		<p class="clue">{clue}</p>
+		<p>-</p>
+		<p class="date">{formattedDate}</p>
+	</header>
+	<Image class="image" src={image} alt={text} />
+	<p>{text}</p>
 </li>
 <style>
 	.link-card {
 		list-style: none;
 		display: flex;
-		padding: 1px;
+		flex-direction: column;
+		align-items: baseline;;
+
+		padding: 1em;
+		padding-inline: 2em;
 		background-color: #23262d;
 		background-image: none;
 		background-size: 400%;
@@ -32,30 +47,54 @@ const { href, title, body } = Astro.props;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
+	.image {
+		max-width: 400px;
+		height: auto;
+	}
+
+	.date {
+		font-weight: bold;
 		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
+		margin-bottom: 1em;
+		text-decoration: 3px solid rgb(var(--accent)) underline;
 	}
+
+	.clue {
+		font-weight: bold;
+		text-decoration: 3px solid rgb(var(--accent-light)) underline;
+	}
+
+	header {
+		font-size: 1em;
+		display: flex;
+		gap: 1em;
+	}
+
+	header p {
+		display: block;
+	}
+
 	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
+		font-size: 1em;
+		font-weight: bold;
+		color: white;
 		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
+
+		text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+
+		padding: 4px;
+
+		background:
+			var(--accent-gradient) rgba(0, 0, 0, 0.9) ;
+
+		background-size: 400%;
+
+		border-radius: 5px;
+
+		/* background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%; */
 	}
 </style>
