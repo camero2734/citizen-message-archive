@@ -115,18 +115,22 @@ text.split('\n').forEach((line) => {
 	}
 
 	.text {
+		font-size: 0.75em;
+		font-family: 'Courier New', monospace;
+		font-weight: 600;
 		padding-left: 1em;
+
+		color: #ccc;
 
 		border: 1px solid rgb(var(--accent-dark));
 		border-width: 0 0 0 0.25em;
-		border-image: var(--accent-gradient) 1;
+		border-image: linear-gradient(to bottom, rgb(var(--accent)), rgb(var(--accent-light))) 1;
 	}
 
 	.text p {
 		display: inline;
 		margin-top: 0;
 		margin-bottom: 0;
-		opacity: 0.75;
 	}
 
 	h2 {
@@ -145,19 +149,16 @@ text.split('\n').forEach((line) => {
 	}
 
 	.double {
-		font-weight: bold;
+		font-weight: 600;
+		color: white;
 
-		/* background: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent; */
-		/* background-size: 400%;
-		background-position: 0%; */
-		filter: drop-shadow(2px 2px rgb(var(--accent)));
-	}
+		/* glowing effect */
+		text-shadow: 
+            0 0 5px rgb(var(--accent-light)),
+            0 0 10px rgb(var(--accent)),
+            0 0 15px rgb(var(--accent-dark));
 
-	@media (max-width: 500px) {
-		header, .text {
-			font-size: 0.75em;
-		}
+		/* font-weight: bold; */
+		/* filter: drop-shadow(5px 0px rgba(255, 255, 255, 1)); */
 	}
 </style>
