@@ -1,5 +1,6 @@
 ---
 import Card, { type Props as CardProps } from '../components/Card.astro';
+import Clue from '../components/Clue.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Create last updated date in format
@@ -33,17 +34,20 @@ const cardData: CardProps[] = [
 		date: new Date("2024-08-18"),
 	},
 ].sort((a, b) => +a.number - +b.number);
-const clues = [];
+const clues: (CardProps | string)[] = [];
+
+const formatNumber = (number: number) => number.toString().padStart(3, '0');
 
 let lastNumber = 0;
 for (const card of cardData) {
 	const number = +card.number;
-	if (lastNumber + 1 !== number) clues.push("??");
+
+	if (lastNumber + 1 !== number) clues.push(`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`);
 
 	clues.push(card);
 	lastNumber = number;
 }
-clues.push("??");
+clues.push(`${formatNumber(lastNumber + 1)}-???`);
 
 ---
 
@@ -58,11 +62,9 @@ clues.push("??");
 		<h2 class="list-heading" id="collected-clues">Collected clues</h2>
 
 		<ol class="clues">
-			{clues.map((clue) => (
-				typeof clue === "string"
-					? <li>{clue}</li>
-					: <li><a href={`#${clue.number}`}>{clue.clue}</a></li>
-			))}
+			{clues.map((clue) => typeof clue === "string"
+				? <li class="placeholder">{clue}</li>
+				: <Clue {...clue} />)}
 		</ol>
 
 		<h2 class="list-heading" id="most-recent">Most recent letters</h2>
@@ -101,15 +103,11 @@ clues.push("??");
 
 	.clues {
 		list-style: none;
-		display: flex;
-		justify-content: center;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+		justify-content: start;
 		gap: 1em;
 		padding: 0;
-	}
-
-	.clues a {
-		color: inherit;
-		font-weight: bold;
 	}
 
 	.list {
@@ -124,7 +122,6 @@ clues.push("??");
 	.list-heading {
 		font-size: inherit;
 		color: #777;
-		/* padding-left: 2em; */
 		padding-bottom: 0;
 		padding-top: 1.5em;
 	}
@@ -151,5 +148,13 @@ clues.push("??");
 	.dema {
 		font-weight: bold;
 		color: #999;
+	}
+
+	.placeholder {
+		opacity: 0.25;
+		text-shadow: 
+			0 0 2px rgb(var(--accent-light)),
+			0 0 4px rgb(var(--accent)),
+			0 0 6px rgb(var(--accent-dark));
 	}
 </style>

@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import { images } from '../helpers/images';
+
+export interface Props {
+	clue: string;
+	number: string;
+}
+
+const { clue, number } = Astro.props;
+
+---
+
+<li class="clue">
+  <a class="link" href={`#${number}`}>
+    <h2 class="number">{number}</h2>
+    <p class="text">{clue}</p>
+  </a>
+</li>
+<style>
+
+.link, .text {
+  display: inline;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.number {
+  display: inline;
+  font-size: inherit;
+
+  color: white;
+  margin-bottom: 0;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+  padding: 4px;
+
+  background:
+    var(--accent-gradient) rgba(0, 0, 0, 0.9);
+
+  background-size: 400%;
+  border-radius: 5px;
+}
+</style>
