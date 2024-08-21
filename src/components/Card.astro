@@ -53,7 +53,6 @@ text.split('\n').forEach((line) => {
 ---
 
 <li class="link-card" id={number}>
-	<!-- <h2 class="gradient-number">{number}</h2> -->
 	<header>
 		<p class="date" title={normalDate}>{formattedDate}</p>
 		<p>-</p>
@@ -62,7 +61,7 @@ text.split('\n').forEach((line) => {
 	<p class="location">{location}</p>
 	<figure class="image-container">
 		<Image class="image" src={image()} alt={text} />
-		<figcaption class="image-number gradient-number">{number}</figcaption>
+		<figcaption class="image-number">{number}</figcaption>
 	</figure>
 	<div class="text">
 		{textPieces.map((piece) => (
@@ -153,21 +152,6 @@ text.split('\n').forEach((line) => {
 		font-family: 'Courier New', monospace;
 	}
 
-	.gradient-number {
-		font-size: 1em;
-		font-weight: bold;
-		color: white;
-		margin-bottom: 0;
-		text-shadow: 0 0 5px rgba(0, 0, 0, 1);
-		padding: 4px;
-
-		background:
-			var(--accent-gradient) rgba(0, 0, 0, 0.9) ;
-
-		background-size: 400%;
-		border-radius: 5px;
-	}
-
 	.double {
 		font-weight: 600;
 		color: white;
@@ -188,6 +172,20 @@ text.split('\n').forEach((line) => {
 		position: absolute;
 		left: 10px;
 		top: 10px;
+
+		font-size: 1em;
+		font-weight: bold;
+		color: white;
+		margin-bottom: 0;
+		text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+		padding: 4px;
+
+		background: #E6652F;
+  
+		/* This is so hacky to get the height to be roughly square */
+		padding-block: 6.4px;
+
+		border-radius: 5px;
 	}
 
 	@media (max-width: 500px) {
