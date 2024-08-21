@@ -1,26 +1,25 @@
 ---
 import { Image } from 'astro:assets';
 import { images } from '../helpers/images';
+import { format } from 'date-fns/format';
 
 export interface Props {
 	date: Date;
 	text: string;
 	clue: string;
 	number: string;
+	location: string;
 }
 
-const { text, date, clue, number } = Astro.props;
+const { text, date, clue, number, location } = Astro.props;
 
 const image = images[`../images/${number}.png`] || images[`../images/${number}.jpg`];
 if (!image) {
 	throw new Error(`Image not found for clue ${number}`);
 }
 
-const formattedDate = new Intl.DateTimeFormat('en-GB', {
-	day: '2-digit',
-	month: 'long',
-	year: 'numeric',
-}).format(date);
+const formattedDate = format(date, "'0'yy MM'MOON' dd");
+const normalDate = format(date, "dd MMMM yyyy");
 
 interface TextPiece {
 	type: "p" | "span" | "br";
@@ -54,13 +53,17 @@ text.split('\n').forEach((line) => {
 ---
 
 <li class="link-card" id={number}>
-	<h2>{number}</h2>
+	<!-- <h2 class="gradient-number">{number}</h2> -->
 	<header>
-		<p class="date">📆 {formattedDate}</p>
+		<p class="date" title={normalDate}>{formattedDate}</p>
 		<p>-</p>
-		<p class="clue-s">🧩 <span class="clue">{clue}</span></span></p>
+		<p class="clue-s"><span class="clue">{clue}</span></span></p>
 	</header>
-	<Image class="image" src={image()} alt={text} />
+	<p class="location">{location}</p>
+	<figure class="image-container">
+		<Image class="image" src={image()} alt={text} />
+		<figcaption class="image-number gradient-number">{number}</figcaption>
+	</figure>
 	<div class="text">
 		{textPieces.map((piece) => (
 			piece.type === "p"
@@ -98,10 +101,18 @@ text.split('\n').forEach((line) => {
 		font-weight: bold;
 		color: white;
 		margin-bottom: 1em;
+
+		font-family: 'Courier New', monospace;
 	}
 
 	.clue {
 		font-weight: bold;
+		font-family: 'Courier New', monospace;
+
+		text-shadow: 
+				0 0 4px rgb(var(--accent-light)),
+				0 0 8px rgb(var(--accent)),
+				0 0 12px rgb(var(--accent-dark));
 	}
 
 	header {
@@ -112,6 +123,7 @@ text.split('\n').forEach((line) => {
 
 	header p {
 		display: block;
+		margin-bottom: 0;
 	}
 
 	.text {
@@ -133,7 +145,15 @@ text.split('\n').forEach((line) => {
 		margin-bottom: 0;
 	}
 
-	h2 {
+	.location {
+		margin: 0;
+		font-size: 0.75em;
+		opacity: 0.5;
+		margin-bottom: 2em;
+		font-family: 'Courier New', monospace;
+	}
+
+	.gradient-number {
 		font-size: 1em;
 		font-weight: bold;
 		color: white;
@@ -152,9 +172,33 @@ text.split('\n').forEach((line) => {
 		font-weight: 600;
 		color: white;
 
+		/* glowing effect */
 		text-shadow: 
             0 0 5px rgb(var(--accent-light)),
             0 0 10px rgb(var(--accent)),
             0 0 15px rgb(var(--accent-dark));
+	}
+
+	.image-container {
+		position: relative;
+		margin: 0;
+	}
+
+	.image-number {
+		position: absolute;
+		left: 10px;
+		top: 10px;
+	}
+
+	@media (max-width: 500px) {
+		.location {
+			font-size: 0.6em;
+		}
+	}
+
+	@media (max-width: 400px) {
+		header, .text {
+			font-size: 0.75em;
+		}
 	}
 </style>
