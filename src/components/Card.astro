@@ -10,7 +10,8 @@ export interface Props {
 
 const { text, imageName } = Astro.props;
 
-const image = images[`../images/${imageName}.png`] || images[`../images/${imageName}.jpg`];
+// TODO
+const image = images[`../images/${imageName}.png`] || images[`../images/${imageName}.jpg`] || images[`../images/001.jpg`];
 if (!image) {
 	throw new Error(`Image not found for ${imageName}`);
 }

@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import { images } from '../helpers/images';
 
 export interface Props {
 	clue: string;
@@ -22,7 +20,6 @@ const color = Astro.props.color || "#E6652F";
         ? null
         : <p class="text">{clue}</p>
     }
-    
   </a>
 </li>
 <style define:vars={{ color }}>

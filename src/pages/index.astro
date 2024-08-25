@@ -1,7 +1,10 @@
 ---
-import Card, { type Props as CardProps } from '../components/Card.astro';
+import Piece, { type Props as PieceProps } from '../components/Piece.astro';
 import Clue from '../components/Clue.astro';
 import Layout from '../layouts/Layout.astro';
+import Letter from '../components/Letter.astro';
+
+import data from '../data.json' assert { type: 'json' };
 
 // Create last updated date in format
 const lastUpdated = new Date().toLocaleString('en-GB', {
@@ -14,51 +17,10 @@ const lastUpdated = new Date().toLocaleString('en-GB', {
 	timeZoneName: 'short',
 });
 
-const cardData: CardProps[] = [
-	{
-		number: "001",
-		text: "Dear Eliot,\nI am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others cannot see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the [...] forces of the bishops - a whisper [...]",
-		clue: "WEM",
-		date: new Date("2024-08-15"),
-		location: "Ball Arena (Night 1) - Denver, CO",
-	},
-	{
-		number: "002",
-		text: "[...] oppressive [...] that has become [...] has been an inspiration [...] this art - I only hope [...] that you see the hues [...] hope that this fire you [...] join our cause. I think [...] we need you more TThan [...]",
-		clue: "T",
-		date: new Date("2024-08-21"),
-		location: "Moda Center - Portland, OR"
-	},
-	{
-		number: "008",
-		text: "You're right, the only glorious guest (quest?) left is beyond these walls. Clancy has exposed cracks that I am now ready to break open. We have to act fast, before the bishops have a chance to react. I aMM willing to take the risk and stand OOn the side of tRRuth.\n\nSahlo,\nJansen",
-		clue: "MOR",
-		date: new Date("2024-08-16"),
-		location: "Ball Arena (Night 2) - Denver, CO",
-	},
-	{
-		number: "018",
-		text: "I have to confess; My admiration for you is not my only reason for writing. It's clear you have seen freeDDom. I know you've made it outside once or twice, and this seems to be how you tell your tale. There's so many of us that want to feel whatever you've felt - to know what weightlessness could possess someone to move as freely as you do. Clancy's audacIIty has awakened something in us all, and a soul as beautiful as yours must want to get out again. Maybe you want to get out once and for all. I would love to tell you our plan.\n\nChasing FFreedom,\nBarea",
-		clue: "DIF",
-		date: new Date("2024-08-22"),
-		location: "Climate Pledge Arena - Seattle, WA",
-	},
-	{
-		number: "027",
-		text: "Dear Karta,\nIf you only knew how long I spend washing my hands you woulDD know how embarrassed I am. They don't want anyone to know what we do down here. There were even laws written about what we inhale, and how deeply our skin gets stained. But you must be the baker -- the sleuth whOO found me out. [...] right - it's an odd [...] cellar. Manipulating [...]",
-		clue: "DO",
-		date: new Date("2024-08-18"),
-		location: "Delta Center - Salt Lake City, UT",
-	},
-        {
-          number: "003",
-          text: "a scream. Clancy's bravery [...] to me, and has inspired [...] that I'm right to assUUme [...] that the others cannot. I [...] feel can motivate you to [...] you are one of uSS, and [...] ever. Will you join us?\n\n Hoping,\nAria",
-          clue: "US",
-          date: new Date("2024-08-24"),
-          location: "Oakland Arena - Oakland, CA"
-        },
-].sort((a, b) => +a.number - +b.number);
-const clues: (CardProps | string)[] = [];
+const pieces = data.pieces.map(piece => ({ ...piece, date: new Date(piece.date) }));
+
+const cardData: PieceProps[] =  pieces.sort((a, b) => +a.number - +b.number);
+const allClues: (PieceProps | string)[] = [];
 
 const formatNumber = (number: number) => number.toString().padStart(3, '0');
 
@@ -66,12 +28,24 @@ let lastNumber = 0;
 for (const card of cardData) {
 	const number = +card.number;
 
-	if (lastNumber + 1 !== number) clues.push(`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`);
+	if (lastNumber + 1 !== number) allClues.push(`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`);
 
-	clues.push(card);
+	allClues.push(card);
 	lastNumber = number;
 }
-clues.push(`${formatNumber(lastNumber + 1)}-???`);
+allClues.push(`${formatNumber(lastNumber + 1)}-???`);
+
+// Remove pieces in letter
+const piecesInLetters = new Set<string>();
+for (const letter of data.letters) {
+	for (const piece of letter.pieces) piecesInLetters.add(piece);
+}
+
+const clues = allClues.filter(c => {
+	if (typeof c === 'string') return true;
+	return !piecesInLetters.has(c.number);
+});
+
 
 ---
 
@@ -83,18 +57,34 @@ clues.push(`${formatNumber(lastNumber + 1)}-???`);
 			<p class="last-updated">Last updated: {lastUpdated}</p>
 		</aside>
 
-		<h2 class="list-heading" id="collected-clues">Collected clues</h2>
+		<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
 
+		<ol class="letters">
+			{
+				data.letters.map((letter) => (
+					<Letter
+						numbers={letter.pieces}
+						page={letter.number}
+						sender={letter.sender}
+						recipient={letter.recipient}
+						text={letter.text}
+						decoded={letter.decoded}
+					/>
+				))
+			}
+		</ol>
+
+		<h2 class="list-heading" id="collected-clues">Remaining Pieces</h2>
 		<ol class="clues">
 			{clues.map((clue) => typeof clue === "string"
 				? <li class="placeholder">{clue}</li>
-				: <Clue {...clue} />)}
+				: <Clue clue={clue.clue} number={clue.number as string} />)}
 		</ol>
 
-		<h2 class="list-heading" id="most-recent">Most recent letters</h2>
+		<h2 class="list-heading" id="most-recent">Most recent pieces</h2>
 		<ol class="list">
 			{cardData.sort((a, b) => b.date.getTime() - a.date.getTime()).map((card) => (
-				<Card {...card} />
+				<Piece {...card} />
 			))}
 		</ol>
 	</main>
@@ -131,6 +121,11 @@ clues.push(`${formatNumber(lastNumber + 1)}-???`);
 		grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
 		justify-content: start;
 		gap: 2em 1em;
+		padding: 0;
+	}
+
+	.letters {
+		list-style: none;
 		padding: 0;
 	}
 

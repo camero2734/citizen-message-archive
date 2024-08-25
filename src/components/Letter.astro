@@ -1,29 +1,73 @@
 ---
-import { type Props as CardProps } from '../components/Card.astro';
-import Clue from '../components/Clue.astro';
+import { format } from 'date-fns/format';
+import Card from './Card.astro';
+import ClueGroup from './ClueGroup.astro';
 
 export interface Props {
-	letterNumber?: number;
-  clues: CardProps[];
-  completeMessage: string;
-  // image: string;
+	page: number;
+	numbers: string[];
+  text: string;
+  decoded: string;
+
+  sender: string;
+  recipient: string;
 }
 
-const { letterNumber, clues, completeMessage } = Astro.props;
+const { page, numbers, text, sender, recipient, decoded } = Astro.props;
+
+const pageImageName = `page-${page}`;
 
 ---
 
-<li>
-  <h2>Letter {letterNumber}</h2>
-  <p>{completeMessage}</p>
-  <h3>Clues</h3>
-  <ol>
-    {clues.map((clue) => (
-      <Clue {...clue} />
-    ))}
-  </ol>
-</li>
+<Card imageName={pageImageName} text={text}>
+  <h2 slot="header">
+    <span class="header-main">Letter 1</span>
+    -
+    <span class="highlighted">{decoded}</span>
+  </h2>
+
+  <div class="fromto" slot="subheader">
+    <span>From</span>
+    <span class="person">{sender}</span>
+    <span>to</span>
+    <span class="person">{recipient}</span>
+  </div>
+
+  <ClueGroup numbers={numbers} slot="image-overlay" />
+</Card>
 
 <style>
+  h2 {
+    font-size: 1em;
+    margin-bottom: 0.25em;
 
+		font-family: 'Courier New', monospace;
+  }
+
+  .header-main {
+    opacity: 0.75;
+  }
+
+  .fromto {
+    margin: 0;
+		font-size: 0.75em;
+		opacity: 0.5;
+		margin-bottom: 2em;
+		font-family: 'Courier New', monospace;
+    font-style: italic;
+  }
+
+  .person {
+    font-weight: bold;
+  }
+
+  .highlighted {
+		font-weight: bold;
+		font-family: 'Courier New', monospace;
+
+		text-shadow: 
+			0 0 4px rgb(var(--accent-light)),
+			0 0 8px rgb(var(--accent)),
+			0 0 12px rgb(var(--accent-dark));
+  }
 </style>
