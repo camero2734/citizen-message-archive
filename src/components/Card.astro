@@ -6,9 +6,10 @@ import Text from './Text.astro';
 export interface Props {
 	text: string;
 	imageName: string;
+	collapsible?: boolean;
 }
 
-const { text, imageName } = Astro.props;
+const { text, imageName, collapsible } = Astro.props;
 
 // TODO
 const image = images[`../images/${imageName}.png`] || images[`../images/${imageName}.jpg`] || images[`../images/001.jpg`];
@@ -18,17 +19,42 @@ if (!image) {
 
 ---
 
-<li class="link-card" id={imageName}>
-	<slot name="header" />
-	<slot name="subheader" />
-	<figure class="image-container">
-		<Image class="image" src={image()} alt={text} />
-		<div class="image-overlay">
-			<slot name="image-overlay" />
-		</div>
-	</figure>
-	<Text content={text} />
-</li>
+{
+	collapsible 
+	?
+	<li class="link-card" id={imageName}>
+		<details>
+			<summary>
+				<slot name="header" />
+				<slot name="subheader" />
+			</summary>
+
+			<figure class="image-container">
+				<Image class="image" src={image()} alt={text} />
+				<div class="image-overlay">
+					<slot name="image-overlay" />
+				</div>
+			</figure>
+			<Text content={text} />
+		</details>
+	</li>
+	:
+	<li class="link-card" id={imageName}>
+		<slot name="header" />
+		<slot name="subheader" />
+		<figure class="image-container">
+			<Image class="image" src={image()} alt={text} />
+			<div class="image-overlay">
+				<slot name="image-overlay" />
+			</div>
+		</figure>
+		<Text content={text} />
+	</li>
+}
+
+
+
+
 <style>
 	.link-card {
 		list-style: none;
