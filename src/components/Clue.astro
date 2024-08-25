@@ -5,19 +5,27 @@ import { images } from '../helpers/images';
 export interface Props {
 	clue: string;
 	number: string;
+  hideText?: boolean;
+  color?: string;
 }
 
 const { clue, number } = Astro.props;
+const color = Astro.props.color || "#E6652F";
 
 ---
 
 <li class="clue">
   <a class="link" href={`#${number}`}>
     <h2 class="number">{number}</h2>
-    <p class="text">{clue}</p>
+    {
+      Astro.props.hideText
+        ? null
+        : <p class="text">{clue}</p>
+    }
+    
   </a>
 </li>
-<style>
+<style define:vars={{ color }}>
 
 .link, .text {
   display: inline;
@@ -35,7 +43,7 @@ const { clue, number } = Astro.props;
   text-shadow: 0 0 5px rgba(0, 0, 0, 1);
   padding: 4px;
 
-  background: #E6652F;
+  background: var(--color);
   
   /* This is so hacky to get the height to be roughly square */
   padding-block: 6.95px;

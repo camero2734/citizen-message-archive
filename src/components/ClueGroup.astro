@@ -1,0 +1,45 @@
+---
+import { type Props as CardProps } from './Card.astro';
+import Clue from './Clue.astro';
+import Text from './Text.astro';
+
+export interface Props {
+	letterNumber?: number;
+  clues: CardProps[];
+  completeMessage: string;
+  // image: string;
+}
+
+const { letterNumber, clues, completeMessage } = Astro.props;
+
+---
+
+<li class="letter" id={letterNumber ? `letter-${letterNumber}` : undefined}>
+  <ol class="letter-clues">
+    {clues.map((clue, idx) => (
+      <Clue {...clue} hideText={true} color="#F7C622" />
+      <div class="dash"></div>
+    ))}
+  </ol>
+</li>
+
+<style>
+
+.letter-clues {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.dash {
+  margin: auto 0;
+  width: 20px;
+  height: 4px;
+  background-color: #F7C622;
+}
+
+.dash:last-of-type {
+  display: none;
+}
+
+</style>
