@@ -4,11 +4,9 @@ export interface Props {
 	clue: string;
 	number: string;
   hideText?: boolean;
-  color?: string;
 }
 
 const { clue, number } = Astro.props;
-const color = Astro.props.color || "#E6652F";
 
 ---
 
@@ -22,7 +20,7 @@ const color = Astro.props.color || "#E6652F";
     }
   </a>
 </li>
-<style define:vars={{ color }}>
+<style>
 
 .link, .text {
   display: inline;
@@ -40,7 +38,7 @@ const color = Astro.props.color || "#E6652F";
   text-shadow: 0 0 5px rgba(0, 0, 0, 1);
   padding: 4px;
 
-  background: var(--color);
+  background: #E6652F;
   
   /* This is so hacky to get the height to be roughly square */
   padding-block: 6.95px;

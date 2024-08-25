@@ -14,7 +14,7 @@ const { numbers } = Astro.props;
 <li class="group">
   <ol class="group-clues">
     {numbers.map((number) => (
-      <Clue clue="" number={number} hideText={true} color="#F7C622" />
+      <Clue clue="" number={number} hideText={true} />
       <div class="dash"></div>
     ))}
   </ol>
@@ -32,7 +32,7 @@ const { numbers } = Astro.props;
   margin: auto 0;
   width: 20px;
   height: 4px;
-  background-color: #F7C622;
+  background-color: #E6652F;
 }
 
 .dash:last-of-type {
