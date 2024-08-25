@@ -1,0 +1,60 @@
+{
+  "pieces": [
+    {
+      "number": "001",
+      "clue": "WEM",
+      "date": "2024-08-15",
+      "location": "Ball Arena (Night 1) - Denver, CO",
+      "text": "Dear Eliot,\n\nI am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others cannot see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the [...] forces of the bishops - a whisper [...]"
+    },
+    {
+      "number": "002",
+      "clue": "T",
+      "date": "2024-08-21",
+      "location": "Moda Center - Portland, OR",
+      "text": "[...] oppressive [...] that has become [...] has been an inspiration [...] this art - I only hope [...] that you see the hues [...] hope that this fire you [...] join our cause. I think [...] we need you more TThan [...]"
+    },
+    {
+      "number": "008",
+      "clue": "MOR",
+      "date": "2024-08-16",
+      "location": "Ball Arena (Night 2) - Denver, CO",
+      "text": "You're right, the only glorious guest (quest?) left is beyond these walls. Clancy has exposed cracks that I am now ready to break open. We have to act fast, before the bishops have a chance to react. I aMM willing to take the risk and stand OOn the side of tRRuth.\n\nSahlo,\nJansen"
+    },
+    {
+      "number": "018",
+      "clue": "DIF",
+      "date": "2024-08-22",
+      "location": "Climate Pledge Arena - Seattle, WA",
+      "text": "I have to confess; My admiration for you is not my only reason for writing. It's clear you have seen freeDDom. I know you've made it outside once or twice, and this seems to be how you tell your tale. There's so many of us that want to feel whatever you've felt - to know what weightlessness could possess someone to move as freely as you do. Clancy's audacIIty has awakened something in us all, and a soul as beautiful as yours must want to get out again. Maybe you want to get out once and for all. I would love to tell you our plan.\n\nChasing FFreedom,\nBarea"
+    },
+    {
+      "number": "027",
+      "clue": "DO",
+      "date": "2024-08-18",
+      "location": "Delta Center - Salt Lake City, UT",
+      "text": "Dear Karta, If you only knew how long I spend washing my hands you woulDD know how embarrassed I am. They don't want anyone to know what we do down here. There were even laws written about what we inhale, and how deeply our skin gets stained. But you must be the baker -- the sleuth whOO found me out. [...] right - it's an odd [...] cellar. Manipulating [...]"
+    },
+    {
+      "number": "003",
+      "clue": "US",
+      "date": "2024-08-24",
+      "location": "Oakland Arena - Oakland, CA",
+      "text": "a scream. Clancy's bravery [...] to me, and has inspired [...] that I'm right to assUUme [...] that the others cannot. I [...] feel can motivate you to [...] you are one of uSS, and [...] ever. Will you join us?\n\nHoping,\nAria"
+    }
+  ],
+  "letters": [
+    {
+      "number": 1,
+      "pieces": [
+        "001",
+        "002",
+        "003"
+      ],
+      "sender": "Aria",
+      "recipient": "Eliot",
+      "decoded": "WE MUST",
+      "text": "Dear Eliot,\n\nI am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others do not see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the oppressive forces of the bishops - a whisper that has become a scream. Clancy's bravery has been an inspiration to me, and as inspired this art - I only hope that I'm right to assUUme that you see the hues that the others cannot. I hope that this fire you feel can motivate you to join our cause. I think you are one of uSS, we need you more TThan ever. Will you join us?\n\nHoping,\nAria"
+    }
+  ]
+}

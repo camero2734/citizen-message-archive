@@ -1,0 +1,92 @@
+---
+
+export interface Props {
+	content: string;
+}
+
+interface TextPiece {
+  type: "p" | "span" | "br";
+  text: string;
+}
+
+function toTextPieces(text: string): TextPiece[] {
+  let textPieces: TextPiece[] = [];
+
+  text.split('\n').forEach((line) => {
+    const split = line.split(/([A-Z])\1{1}/);
+
+    for (const piece of split) {
+      if (piece.length === 1) {
+        textPieces.push({
+          type: "span",
+          text: piece,
+        });
+      } else if (piece) {
+        textPieces.push({
+          type: "p",
+          text: piece,
+        });
+      }
+    }
+
+    textPieces.push({
+      type: "br",
+      text: "",
+    });
+  });
+
+  return textPieces;
+}
+
+
+const textPieces = toTextPieces(Astro.props.content);
+
+---
+
+<div class="text">
+  {textPieces.map((piece) => (
+    piece.type === "p"
+      ? <p>{piece.text}</p>
+      : piece.type === "br" 
+        ? <br />
+        : <span class="double">{piece.text}{piece.text}</span>
+  ))}
+</div>
+
+<style>
+	.text {
+		font-size: 0.75em;
+		font-family: 'Courier New', monospace;
+		font-weight: 600;
+		padding-left: 1em;
+
+		color: #ccc;
+
+		border: 1px solid rgb(var(--accent-dark));
+		border-width: 0 0 0 0.25em;
+		border-image: linear-gradient(to bottom, rgb(var(--accent)), rgb(var(--accent-light))) 1;
+	}
+
+	.text p {
+		display: inline;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.double {
+		font-weight: 600;
+		color: white;
+
+		/* glowing effect */
+		text-shadow: 
+			0 0 5px rgb(var(--accent-light)),
+			0 0 10px rgb(var(--accent)),
+			0 0 15px rgb(var(--accent-dark));
+	}
+
+  @media (max-width: 400px) {
+		.text {
+			font-size: 0.75em;
+		}
+	}
+</style>

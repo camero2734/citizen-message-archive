@@ -1,0 +1,74 @@
+---
+import { format } from 'date-fns/format';
+import Card from './Card.astro';
+import ClueGroup from './ClueGroup.astro';
+
+export interface Props {
+	page: number;
+	numbers: string[];
+  text: string;
+  decoded: string;
+
+  sender: string;
+  recipient: string;
+}
+
+const { page, numbers, text, sender, recipient, decoded } = Astro.props;
+
+const pageImageName = `page-${page}`;
+
+---
+
+<Card imageName={pageImageName} text={text} collapsible={true}>
+  <h2 slot="header">
+    <span class="header-main">Letter 1</span>
+    -
+    <span class="highlighted">{decoded}</span>
+  </h2>
+
+  <div class="fromto" slot="subheader">
+    <span>From</span>
+    <span class="person">{sender}</span>
+    <span>to</span>
+    <span class="person">{recipient}</span>
+  </div>
+
+  <ClueGroup numbers={numbers} slot="image-overlay" />
+</Card>
+
+<style>
+  h2 {
+    display: inline-block;
+    font-size: 1em;
+    margin-bottom: 0.25em;
+
+		font-family: 'Courier New', monospace;
+  }
+
+  .header-main {
+    opacity: 0.75;
+  }
+
+  .fromto {
+    margin: 0;
+		font-size: 0.75em;
+		opacity: 0.5;
+		margin-bottom: 2em;
+		font-family: 'Courier New', monospace;
+    font-style: italic;
+  }
+
+  .person {
+    font-weight: bold;
+  }
+
+  .highlighted {
+		font-weight: bold;
+		font-family: 'Courier New', monospace;
+
+		text-shadow: 
+			0 0 4px rgb(var(--accent-light)),
+			0 0 8px rgb(var(--accent)),
+			0 0 12px rgb(var(--accent-dark));
+  }
+</style>

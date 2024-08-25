@@ -1,0 +1,42 @@
+---
+import { type Props as CardProps } from './Card.astro';
+import Clue from './Clue.astro';
+import Text from './Text.astro';
+
+export interface Props {
+  numbers: string[];
+}
+
+const { numbers } = Astro.props;
+
+---
+
+<li class="group">
+  <ol class="group-clues">
+    {numbers.map((number) => (
+      <Clue clue="" number={number} hideText={true} />
+      <div class="dash"></div>
+    ))}
+  </ol>
+</li>
+
+<style>
+
+.group-clues {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.dash {
+  margin: auto 0;
+  width: 20px;
+  height: 4px;
+  background-color: #E6652F;
+}
+
+.dash:last-of-type {
+  display: none;
+}
+
+</style>

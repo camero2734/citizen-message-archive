@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import { images } from '../helpers/images';
 
 export interface Props {
 	clue: string;
 	number: string;
+  hideText?: boolean;
 }
 
 const { clue, number } = Astro.props;
@@ -14,7 +13,11 @@ const { clue, number } = Astro.props;
 <li class="clue">
   <a class="link" href={`#${number}`}>
     <h2 class="number">{number}</h2>
-    <p class="text">{clue}</p>
+    {
+      Astro.props.hideText
+        ? null
+        : <p class="text">{clue}</p>
+    }
   </a>
 </li>
 <style>
