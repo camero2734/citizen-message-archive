@@ -1,0 +1,82 @@
+---
+import { format } from 'date-fns/format';
+import Card from './Card.astro';
+import Clue from './Clue.astro';
+
+export interface Props {
+	date: Date;
+	text: string;
+	clue: string;
+	number: string;
+	location: string;
+}
+
+const { text, date, clue, location, number } = Astro.props;
+const formattedDate = format(date, "'0'yy MM'MOON' dd");
+const normalDate = format(date, "dd MMMM yyyy");
+
+---
+
+<Card imageName={number} text={text}>
+  <header slot="header">
+		<p class="date" title={normalDate}>{formattedDate}</p>
+		<p>-</p>
+		<p class="clue-s"><span class="clue">{clue}</span></span></p>
+	</header>
+
+  <p class="location" slot="subheader">{location}</p>
+
+  <Clue clue={number} number={number} hideText={true} slot="image-overlay" />
+</Card>
+
+<style>
+	.date {
+		font-weight: bold;
+		color: white;
+		margin-bottom: 1em;
+
+		font-family: 'Courier New', monospace;
+	}
+
+	.clue {
+		font-weight: bold;
+		font-family: 'Courier New', monospace;
+
+		text-shadow: 
+			0 0 4px rgb(var(--accent-light)),
+			0 0 8px rgb(var(--accent)),
+			0 0 12px rgb(var(--accent-dark));
+	}
+
+  header {
+		font-size: 1em;
+		display: flex;
+		gap: 1em;
+	}
+
+	header p {
+		display: block;
+		margin-bottom: 0;
+	}
+
+	.location {
+		margin: 0;
+		font-size: 0.75em;
+		opacity: 0.5;
+		margin-bottom: 2em;
+		font-family: 'Courier New', monospace;
+	}
+
+  @media (max-width: 500px) {
+		.location {
+			font-size: 0.6em;
+		}
+	}
+
+	@media (max-width: 400px) {
+		header {
+			font-size: 0.75em;
+		}
+	}
+
+</style>

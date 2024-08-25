@@ -1,39 +1,30 @@
 ---
 import { Image } from 'astro:assets';
 import { images } from '../helpers/images';
-import { format } from 'date-fns/format';
 import Text from './Text.astro';
 
 export interface Props {
-	date: Date;
 	text: string;
-	clue: string;
-	number: string;
-	location: string;
+	imageName: string;
 }
 
-const { text, date, clue, number, location } = Astro.props;
+const { text, imageName } = Astro.props;
 
-const image = images[`../images/${number}.png`] || images[`../images/${number}.jpg`];
+const image = images[`../images/${imageName}.png`] || images[`../images/${imageName}.jpg`];
 if (!image) {
-	throw new Error(`Image not found for clue ${number}`);
+	throw new Error(`Image not found for ${imageName}`);
 }
-
-const formattedDate = format(date, "'0'yy MM'MOON' dd");
-const normalDate = format(date, "dd MMMM yyyy");
 
 ---
 
-<li class="link-card" id={number}>
-	<header>
-		<p class="date" title={normalDate}>{formattedDate}</p>
-		<p>-</p>
-		<p class="clue-s"><span class="clue">{clue}</span></span></p>
-	</header>
-	<p class="location">{location}</p>
+<li class="link-card" id={imageName}>
+	<slot name="header" />
+	<slot name="subheader" />
 	<figure class="image-container">
 		<Image class="image" src={image()} alt={text} />
-		<figcaption class="image-number">{number}</figcaption>
+		<div class="image-overlay">
+			<slot name="image-overlay" />
+		</div>
 	</figure>
 	<Text content={text} />
 </li>
@@ -60,82 +51,23 @@ const normalDate = format(date, "dd MMMM yyyy");
 		margin-bottom: 2em;
 	}
 
-	.date {
-		font-weight: bold;
-		color: white;
-		margin-bottom: 1em;
-
-		font-family: 'Courier New', monospace;
-	}
-
-	.clue {
-		font-weight: bold;
-		font-family: 'Courier New', monospace;
-
-		text-shadow: 
-			0 0 4px rgb(var(--accent-light)),
-			0 0 8px rgb(var(--accent)),
-			0 0 12px rgb(var(--accent-dark));
-	}
-
-	header {
-		font-size: 1em;
-		display: flex;
-		gap: 1em;
-	}
-
-	header p {
-		display: block;
-		margin-bottom: 0;
-	}
-
-	.location {
-		margin: 0;
-		font-size: 0.75em;
-		opacity: 0.5;
-		margin-bottom: 2em;
-		font-family: 'Courier New', monospace;
-	}
-
 	.image-container {
 		position: relative;
 		margin: 0;
 	}
 
-	.image-number {
+	.image-overlay {
 		position: absolute;
 		left: 10px;
 		top: 10px;
-
-		font-size: 1em;
-		font-weight: bold;
-		color: white;
-		margin-bottom: 0;
-		text-shadow: 0 0 5px rgba(0, 0, 0, 1);
 		padding: 4px;
-
-		background: #E6652F;
-  
-		/* This is so hacky to get the height to be roughly square */
-		padding-block: 6.4px;
-
-		border-radius: 5px;
 	}
 
 	@media (max-width: 500px) {
-		.location {
-			font-size: 0.6em;
-		}
 
 		.link-card {
 			padding-top: 0;
 			padding-inline: 1em;
-		}
-	}
-
-	@media (max-width: 400px) {
-		header, .text {
-			font-size: 0.75em;
 		}
 	}
 </style>
