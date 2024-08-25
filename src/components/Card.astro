@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { images } from '../helpers/images';
 import { format } from 'date-fns/format';
+import Text from './Text.astro';
 
 export interface Props {
 	date: Date;
@@ -21,35 +22,6 @@ if (!image) {
 const formattedDate = format(date, "'0'yy MM'MOON' dd");
 const normalDate = format(date, "dd MMMM yyyy");
 
-interface TextPiece {
-	type: "p" | "span" | "br";
-	text: string;
-}
-
-let textPieces: TextPiece[] = [];
-text.split('\n').forEach((line) => {
-	const split = line.split(/([A-Z])\1{1}/);
-
-	for (const piece of split) {
-		if (piece.length === 1) {
-			textPieces.push({
-				type: "span",
-				text: piece,
-			});
-		} else if (piece) {
-			textPieces.push({
-				type: "p",
-				text: piece,
-			});
-		}
-	}
-
-	textPieces.push({
-		type: "br",
-		text: "",
-	});
-});
-
 ---
 
 <li class="link-card" id={number}>
@@ -63,15 +35,7 @@ text.split('\n').forEach((line) => {
 		<Image class="image" src={image()} alt={text} />
 		<figcaption class="image-number">{number}</figcaption>
 	</figure>
-	<div class="text">
-		{textPieces.map((piece) => (
-			piece.type === "p"
-				? <p>{piece.text}</p>
-				: piece.type === "br" 
-					? <br />
-					: <span class="double">{piece.text}{piece.text}</span>
-		))}
-	</div>
+	<Text content={text} />
 </li>
 <style>
 	.link-card {
@@ -125,42 +89,12 @@ text.split('\n').forEach((line) => {
 		margin-bottom: 0;
 	}
 
-	.text {
-		font-size: 0.75em;
-		font-family: 'Courier New', monospace;
-		font-weight: 600;
-		padding-left: 1em;
-
-		color: #ccc;
-
-		border: 1px solid rgb(var(--accent-dark));
-		border-width: 0 0 0 0.25em;
-		border-image: linear-gradient(to bottom, rgb(var(--accent)), rgb(var(--accent-light))) 1;
-	}
-
-	.text p {
-		display: inline;
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-
 	.location {
 		margin: 0;
 		font-size: 0.75em;
 		opacity: 0.5;
 		margin-bottom: 2em;
 		font-family: 'Courier New', monospace;
-	}
-
-	.double {
-		font-weight: 600;
-		color: white;
-
-		/* glowing effect */
-		text-shadow: 
-			0 0 5px rgb(var(--accent-light)),
-			0 0 10px rgb(var(--accent)),
-			0 0 15px rgb(var(--accent-dark));
 	}
 
 	.image-container {

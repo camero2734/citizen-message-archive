@@ -1,0 +1,29 @@
+---
+import { type Props as CardProps } from '../components/Card.astro';
+import Clue from '../components/Clue.astro';
+
+export interface Props {
+	letterNumber?: number;
+  clues: CardProps[];
+  completeMessage: string;
+  // image: string;
+}
+
+const { letterNumber, clues, completeMessage } = Astro.props;
+
+---
+
+<li>
+  <h2>Letter {letterNumber}</h2>
+  <p>{completeMessage}</p>
+  <h3>Clues</h3>
+  <ol>
+    {clues.map((clue) => (
+      <Clue {...clue} />
+    ))}
+  </ol>
+</li>
+
+<style>
+
+</style>
