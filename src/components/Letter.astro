@@ -41,6 +41,7 @@ const pageImageName = `page-${page}`;
     display: inline-block;
     font-size: 1em;
     margin-bottom: 0.25em;
+    margin-top: 0.75em;
 
 		font-family: 'Courier New', monospace;
   }
@@ -53,9 +54,13 @@ const pageImageName = `page-${page}`;
     margin: 0;
 		font-size: 0.75em;
 		opacity: 0.5;
-		margin-bottom: 2em;
+		margin-bottom: 0.75em;
 		font-family: 'Courier New', monospace;
     font-style: italic;
+  }
+
+  :global(.link-card-details[open]) .fromto {
+    margin-bottom: 2em;
   }
 
   .person {
