@@ -28,7 +28,10 @@ let lastNumber = 0;
 for (const card of cardData) {
 	const number = +card.number;
 
-	if (lastNumber + 1 !== number) allClues.push(`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`);
+	if (lastNumber + 1 !== number) {
+		if (lastNumber + 1 === number - 1) allClues.push(formatNumber(lastNumber + 1));
+		else allClues.push(`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`);
+	}
 
 	allClues.push(card);
 	lastNumber = number;
