@@ -26,7 +26,7 @@ const formatNumber = (number: number) => number.toString().padStart(3, '0');
 
 let lastNumber = 0;
 for (const card of cardData) {
-	if (isNaN(+card.number)) continue;
+	if (!card.number || isNaN(+card.number)) continue;
 	const number = +card.number;
 
 	if (lastNumber + 1 !== number) {
