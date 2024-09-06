@@ -18,8 +18,8 @@ const lastUpdated = new Date().toLocaleString('en-GB', {
 });
 
 const pieces = data.pieces.map(piece => ({ ...piece, date: new Date(piece.date) }));
+const cardData = pieces.filter(piece => !isNaN(parseInt(piece.number))).sort((a, b) => parseInt(a.number) - parseInt(b.number));
 
-const cardData: PieceProps[] =  pieces.sort((a, b) => +a.number - +b.number);
 const allClues: (PieceProps | string)[] = [];
 
 const formatNumber = (number: number) => number.toString().padStart(3, '0');
@@ -58,7 +58,7 @@ const clues = allClues.filter(c => {
 		<h1>Citizen <span class="text-gradient">Message Archive</span></h1>
 		<aside class="disclaimer">
 			<p>Welcome to the <span class="dema">Digital Encrypted Message Archive</span>, an unofficial archive of messages from citizens across Dema.</p>
-			<p class="last-updated"><b>{cardData.length} archived.</b> Last updated: {lastUpdated}</p>
+			<p class="last-updated"><b>{pieces.length} archived.</b> Last updated: {lastUpdated}</p>
 		</aside>
 
 		<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
@@ -87,7 +87,7 @@ const clues = allClues.filter(c => {
 
 		<h2 class="list-heading" id="most-recent">Most recent pieces</h2>
 		<ol class="list">
-			{cardData.sort((a, b) => b.date.getTime() - a.date.getTime()).map((card) => (
+			{pieces.sort((a, b) => b.date.getTime() - a.date.getTime()).map((card) => (
 				<Piece {...card} />
 			))}
 		</ol>
