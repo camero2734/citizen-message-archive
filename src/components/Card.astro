@@ -17,6 +17,8 @@ if (!image) {
 	throw new Error(`Image not found for ${imageName}`);
 }
 
+const imageModule = (await image()).default;
+
 ---
 
 {
@@ -30,7 +32,8 @@ if (!image) {
 			</summary>
 
 			<figure class="image-container">
-				<Image class="image" src={image()} alt={text} />
+				<Image class="image" src={imageModule} alt={text} />
+				<a class="image-link" href={imageModule.src} download={imageName}>↗</a>
 				<div class="image-overlay">
 					<slot name="image-overlay" />
 				</div>
@@ -43,7 +46,8 @@ if (!image) {
 		<slot name="header" />
 		<slot name="subheader" />
 		<figure class="image-container">
-			<Image class="image" src={image()} alt={text} />
+			<Image class="image" src={imageModule} alt={text} />
+			<a class="image-link" href={imageModule.src} target="_blank">↗</a>
 			<div class="image-overlay">
 				<slot name="image-overlay" />
 			</div>
@@ -105,6 +109,17 @@ if (!image) {
 		left: 10px;
 		top: 10px;
 		padding: 4px;
+	}
+
+	.image-link {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		padding: 4px;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 5px;
+		color: white;
+		text-decoration: none;
 	}
 
 	details {
