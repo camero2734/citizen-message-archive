@@ -24,7 +24,7 @@ const imageModule = (await image()).default;
 {
 	collapsible 
 	?
-	<li class="link-card collapsible" id={imageName}>
+	<li class={`link-card collapsible${!text ? " incomplete" : ""}`} id={imageName}>
 		<details class="link-card-details">
 			<summary>
 				<slot name="header" />
@@ -85,6 +85,20 @@ const imageModule = (await image()).default;
 		margin-bottom: 20px;
 		max-width: 50.1ch;
 		text-align: justify;
+	}
+
+	.collapsible.incomplete {
+		pointer-events: none;
+		background: #111;
+		border: 1px dashed #666;
+	}
+
+	:global(main:has(#show-letters:not(:checked))) .collapsible.incomplete {
+		display: none;
+	}
+
+	.collapsible.incomplete summary {
+		list-style: none;
 	}
 
 	@media (max-width: 600px) {

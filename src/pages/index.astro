@@ -42,6 +42,7 @@ allClues.push(`${formatNumber(lastNumber + 1)}-???`);
 // Remove pieces in letter
 const piecesInLetters = new Set<string>();
 for (const letter of data.letters) {
+	if (!letter.text) continue;
 	for (const piece of letter.pieces) piecesInLetters.add(piece);
 }
 
@@ -61,7 +62,14 @@ const clues = allClues.filter(c => {
 			<p class="last-updated"><b>{pieces.length} archived.</b> Last updated: {lastUpdated}</p>
 		</aside>
 
-		<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
+		<header class="completed-letters-header">
+			<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
+			
+			<div class="checkbox-container">
+				<input id="show-letters" type="checkbox" id="show-letters" />
+				<label for="show-letters">Show Incomplete Letters</label>
+			</div>
+		</header>
 
 		<ol class="letters">
 			{
@@ -135,6 +143,16 @@ const clues = allClues.filter(c => {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5em;
+	}
+
+	.completed-letters-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	.checkbox-container {
+		font-size: 0.75em;
 	}
 
 	.list {

@@ -134,6 +134,50 @@
       "text": "Dear Eliot,\n\nI am filled WWith trepidation, nervous that my instincts could be wrong. But I must admit that I see something in you. SomEEthing that doesn't exist in the other citizens of this lifeless construct. I've noticed the way you look at my art, like you see something deeper in it, something the others do not see. It calls you -- and maybe that's because I'm screaming for commonality with every brush stroke. You are the only one seeing what I hope for soMMeone to see. My art, I hope, cries for freedom from these confines, and a whisper against the oppressive forces of the bishops - a whisper that has become a scream. Clancy's bravery has been an inspiration to me, and has inspired this art - I only hope that I'm right to assUUme that you see the hues that the others cannot. I hope that this fire you feel can motivate you to join our cause. I think you are one of uSS, and we need you more TThan ever. Will you join us?\n\nHoping,\nAria"
     },
     {
+      "number": 2,
+      "pieces": [
+        "003",
+        "004"
+      ],
+      "sender": "???",
+      "recipient": "Aria",
+      "decoded": "DE…",
+      "text": ""
+    },
+    {
+      "number": 3,
+      "pieces": [
+        "005",
+        "006"
+      ],
+      "sender": "???",
+      "recipient": "Jansen",
+      "decoded": "RO…",
+      "text": ""
+    },
+    {
+      "number": 4,
+      "pieces": [
+        "007",
+        "008"
+      ],
+      "sender": "Jansen",
+      "recipient": "Mara",
+      "decoded": "TH…MOR",
+      "text": ""
+    },
+    {
+      "number": 5,
+      "pieces": [
+        "009",
+        "010"
+      ],
+      "sender": "???",
+      "recipient": "Leo",
+      "decoded": "WE…",
+      "text": ""
+    },
+    {
       "number": 6,
       "pieces": [
         "011",
@@ -146,6 +190,17 @@
       "text": "Dear Nia,\n\nI'm embarrassed. For the hours that drIIft off, following the city's hidden catacombs, it's never crossed my mind that someone would notice my absent-mindedness. It's true, I've memorized these paths, and followed them through this concrete facade more times than I could possibLLy count. It's an obsession, and I know them like the back of my hand. Because I, LLike the movement you speak of, dream of escape. I have several methods that I've played out, but even if I make it outside, the bishops will find me, no matter how deep in Trench I get, and take me back. Just like Clancy's message has assured us, destroying this vialistic system is the only help. Our enemy is not this structure, our enemy is their lies. I want to BBe part of what you arEE planning.\n\nUnited,\nLeo"
     },
     {
+      "number": 7,
+      "pieces": [
+        "013",
+        "014"
+      ],
+      "sender": "???",
+      "recipient": "Fredrik",
+      "decoded": "C…",
+      "text": ""
+    },
+    {
       "number": 8,
       "pieces": [
         "015",
@@ -155,6 +210,17 @@
       "recipient": "Sara",
       "decoded": "THEM",
       "text": "Dear Sara,\n\nI suppose I haven't hidden myself as well as I had hoped. Perhaps my arrogance at times has let my tongue slip in a conversation or TTwo -- and word has gotten around. It doesn't take too long here. Rumors seem to bounce off the circular walls quite rapidly, and here I am, already hearing my own echo. It's true - I know more tHHan they want me to. I've found more than I should have. I have read contraband documents that make it increasingly difficult to stay silent. In this new age of Clancy's uprising - his fight is sparking emotions that most of us have nevEEr felt. Rebellion is contagious. I want to be a part of it. Let's MMeet.\n\nIgnited,\nFredrik"
+    },
+    {
+      "number": 9,
+      "pieces": [
+        "017",
+        "018"
+      ],
+      "sender": "Barea",
+      "recipient": "???",
+      "decoded": "DIF",
+      "text": ""
     }
   ]
 }
