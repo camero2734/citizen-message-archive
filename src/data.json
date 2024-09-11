@@ -111,6 +111,13 @@
       "date": "2024-09-10",
       "location": "Gas South Arena - Duluth, GA",
       "text": "Dear Leo,\n\nI've noticed you in the square - the WWay you stare at the structures of our city, and even more, the way you trace invisible paths beneath the ground and up the towEErs. There are few engineers in Dema, and your skill and knowledge [...] But only [...] that we [...] once and [...] legend of [...]"
+    },
+    {
+      "number": "016",
+      "clue": "HEM",
+      "date": "2024-09-11",
+      "location": "Amway Center - Orlando, FL",
+      "text": "[...] echo. It's true - I know more tHHan [...] to. I've found more than I should have. [...] read contraband documents that [...] increasingly difficult to stay silent. [...] age of Clancy's uprising - his fight is sparking emotions that most of us have nevEEr felt. Rebellion is contagious. I want to be a part of it. Let's MMeet.\n\nIgnited,\nFredrik"
     }
   ],
   "letters": [
@@ -137,6 +144,17 @@
       "recipient": "Nia",
       "decoded": "ILL BE",
       "text": "Dear Nia,\n\nI'm embarrassed. For the hours that drIIft off, following the city's hidden catacombs, it's never crossed my mind that someone would notice my absent-mindedness. It's true, I've memorized these paths, and followed them through this concrete facade more times than I could possibLLy count. It's an obsession, and I know them like the back of my hand. Because I, LLike the movement you speak of, dream of escape. I have several methods that I've played out, but even if I make it outside, the bishops will find me, no matter how deep in Trench I get, and take me back. Just like Clancy's message has assured us, destroying this vialistic system is the only help. Our enemy is not this structure, our enemy is their lies. I want to BBe part of what you arEE planning.\n\nUnited,\nLeo"
+    },
+    {
+      "number": 8,
+      "pieces": [
+        "015",
+        "016"
+      ],
+      "sender": "Fredrik",
+      "recipient": "Sara",
+      "decoded": "THEM",
+      "text": "Dear Sara,\n\nI suppose I haven't hidden myself as well as I had hoped. Perhaps my arrogance at times has let my tongue slip in a conversation or TTwo -- and word has gotten around. It doesn't take too long here. Rumors seem to bounce off the circular walls quite rapidly, and here I am, already hearing my own echo. It's true - I know more tHHan they want me to. I've found more than I should have. I have read contraband documents that make it increasingly difficult to stay silent. In this new age of Clancy's uprising - his fight is sparking emotions that most of us have nevEEr felt. Rebellion is contagious. I want to be a part of it. Let's MMeet.\n\nIgnited,\nFredrik"
     }
   ]
 }
