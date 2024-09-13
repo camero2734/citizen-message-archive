@@ -228,6 +228,61 @@
       "recipient": "???",
       "decoded": "DIF",
       "text": ""
+    },
+    {
+      "number": 10,
+      "pieces": [
+        "019",
+        "020"
+      ],
+      "sender": "???",
+      "recipient": "???",
+      "decoded": "…",
+      "text": ""
+    },
+    {
+      "number": 11,
+      "pieces": [
+        "021",
+        "022"
+      ],
+      "sender": "Jirita",
+      "recipient": "???",
+      "decoded": "…ME",
+      "text": ""
+    },
+    {
+      "number": 12,
+      "pieces": [
+        "023",
+        "024"
+      ],
+      "sender": "???",
+      "recipient": "???",
+      "decoded": "…",
+      "text": ""
+    },
+    {
+      "number": 13,
+      "pieces": [
+        "025",
+        "026"
+      ],
+      "sender": "???",
+      "recipient": "???",
+      "decoded": "…",
+      "text": ""
+    },
+    {
+      "number": 14,
+      "pieces": [
+        "027",
+        "028"
+      ],
+      "sender": "???",
+      "recipient": "Karta",
+      "decoded": "DO…",
+      "text": ""
     }
   ]
 }
