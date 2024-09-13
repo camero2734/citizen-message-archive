@@ -93,7 +93,7 @@ const imageModule = (await image()).default;
 		border: 1px dashed #666;
 	}
 
-	:global(main:has(#show-letters:not(:checked))) .collapsible.incomplete {
+	:global(:has(#show-letters:not(:checked))) .collapsible.incomplete {
 		display: none;
 	}
 

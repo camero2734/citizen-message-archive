@@ -118,6 +118,13 @@
       "date": "2024-09-11",
       "location": "Kia Center - Orlando, FL",
       "text": "[...] echo. It's true - I know more tHHan [...] to. I've found more than I should have. [...] read contraband documents that [...] increasingly difficult to stay silent. [...] age of Clancy's uprising - his fight is sparking emotions that most of us have nevEEr felt. Rebellion is contagious. I want to be a part of it. Let's MMeet.\n\nIgnited,\nFredrik"
+    },
+    {
+      "number": "014",
+      "clue": "E",
+      "date": "2024-09-13",
+      "location": "PNC Arena - Raleigh, NC",
+      "text": "[...] suspicions, and inspire our [...] to end the suffering of our people. We know they have lied to us, and you can prove it. PlEEase consider hearing our plan.\n\nWarmly,\nSara"
     }
   ],
   "letters": [
@@ -197,7 +204,7 @@
       ],
       "sender": "???",
       "recipient": "Fredrik",
-      "decoded": "C…",
+      "decoded": "C…E",
       "text": ""
     },
     {
