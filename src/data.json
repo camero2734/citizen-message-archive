@@ -128,10 +128,10 @@
     },
     {
       "number": "004",
-      "clue": "",
+      "clue": "S",
       "date": "2024-09-14",
       "location": "Wells Fargo Center - Philadelphia, PA",
-      "text": "[...] almost forgot I possessed. [...] inspired by Clancy's boldness. [...] someone that SSeems brave enough [...] some sort of uprising. I do want to be part of this. There are so many things to fear, but perhaps my biggesTT fear is to do nothing. I am here, and I will go into battle. I will support the uprising in any way I can.\n\nEast is up,\nElliot"
+      "text": "[...] almost forgot I possessed. [...] inspired by Clancy's boldness. [...] someone that SSeems brave enough [...] some sort of uprising. I do want to be part of this. There are so many things to fear, but perhaps my biggesTT fear is to do nothing. I am here, and I will go into battle. I will support the uprising in any way I can.\n\nEast is up,\nEliot"
     }
   ],
   "letters": [
@@ -153,10 +153,10 @@
         "003",
         "004"
       ],
-      "sender": "???",
+      "sender": "Eliot",
       "recipient": "Aria",
-      "decoded": "DE…",
-      "text": ""
+      "decoded": "DEST",
+      "text": "Dear Aria,\n\nGuilty as chargeDD. I feel it too, and I do see the fire in your artwork. It caused me to detect a like-minded rebEEllion in you. It stirred something in me - a feeling that has been dormant for so long, that its re-emergence has invigorated me with newfound a tenacity -- a tenacity that I almost forgot I possessed. I too have been inspired by Clancy's boldness. Finally there is someone that SSeems brave enough to lead us in some sort of uprising. I do want to be part of this. There are so many things to fear, but perhaps my biggesTT fear is to do nothing. I am here, and I will go into battle. I will support the uprising in any way I can.\n\nEast is up,\nEliot"
     },
     {
       "number": 3,
