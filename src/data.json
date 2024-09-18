@@ -146,6 +146,13 @@
       "date": "2024-09-17",
       "location": "Prudent Center - Newark, NJ",
       "text": "Dear Barea,\n\nThat's me. I've always thought of myself as a lighthouse, and less like a silhouette, but I'm sure my window looks more mysterious than that shoWW that I'm putting on in my head. A lighthouse, I suppose, that may only be [...] of hope, not one of dry land. I have [...] there and it's beautiful. Terrifying [...] but beautiful. They've brought me [...] can't take those beautiful [...]"
+    },
+    {
+      "number": "024",
+      "clue": "MWE",
+      "date": "2024-09-18",
+      "location": "Barclays Center - Brooklyn, NY",
+      "text": "[...] they can even [...] wonder if they [...] colors are. You were a great distraction that day. My bishop seemed more volatile than usual, and said that I had lost my dedication. There's some truth to that, because when no one's around, I'm only looking up -- tortured by the wonder of what the vultures see, as they pass in and out of the walls so freely. An arMMed guard, obsessed with trash dragons, he said. How did he even know I was looking? But I daydream of the other side of the wall, and when I saw the flower, I knew you must daydream too. The serendipitous nature of the moment I found quite amusing. But more importantly, the rebellious nature of this mysterious plan has me quite intrigured. I WWould love to know morEE.\n\nSmirking,\nKinton"
     }
   ],
   "letters": [
@@ -278,9 +285,9 @@
         "023",
         "024"
       ],
-      "sender": "???",
+      "sender": "Kinton",
       "recipient": "???",
-      "decoded": "…",
+      "decoded": "…MWE",
       "text": ""
     },
     {
