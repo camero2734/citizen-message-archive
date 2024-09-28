@@ -16,7 +16,7 @@ function toTextPieces(text: string): TextPiece[] {
     const split = line.split(/([A-Z])\1{1}/);
 
     for (const piece of split) {
-      if (piece.length === 1) {
+      if (piece.length === 1 && piece.match(/[A-Z]/)) {
         textPieces.push({
           type: "span",
           text: piece,
@@ -34,6 +34,8 @@ function toTextPieces(text: string): TextPiece[] {
       text: "",
     });
   });
+
+  console.log(textPieces);
 
   return textPieces;
 }
