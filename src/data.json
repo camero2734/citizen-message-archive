@@ -19,7 +19,7 @@
       "clue": "MOR",
       "date": "2024-08-16",
       "location": "Ball Arena (Night 2) - Denver, CO",
-      "text": "You're right, the only glorious guest (quest?) left is beyond these walls. Clancy has exposed cracks that I am now ready to break open. We have to act fast, before the bishops have a chance to react. I aMM willing to take the risk and stand OOn the side of tRRuth.\n\nSahlo,\nJansen"
+      "text": "You're right, the only glorious quest left is beyond these walls. Clancy has exposed cracks that I am now ready to break open. We have to act fast, before the bishops have a chance to react. I aMM willing to take the risk and stand OOn the side of tRRuth.\n\nSahlo,\nJansen"
     },
     {
       "number": "018",
@@ -187,7 +187,7 @@
       "clue": "E",
       "date": "2024-09-28",
       "location": "",
-      "text": "[...] same without him here. [...] Keons was what I admired, [...] even know what it means to be a Vialist anymore. I see them diffEErently, I see deception. I see rage. Your letter has confirmed some of my doubts, and has begun to ignite a new passion to destroy this construct that has deceived me for so long. [...]"
+      "text": "[...] same without him here. [...] Keons was what I admired, [...] even know what it means to be a Vialist anymore. I see them diffEErently, I see deception. I see rage. Your letter has confirmed some of my doubts, and has begun to ignite a new passion to destroy this construct that has deceived me for so long. "
     }
   ],
   "letters": [
@@ -229,12 +229,13 @@
       "number": 4,
       "pieces": [
         "007",
+        "L04",
         "008"
       ],
       "sender": "Jansen",
       "recipient": "Mara",
-      "decoded": "TH…MOR",
-      "text": ""
+      "decoded": "THEMOR",
+      "text": "Dear Mara,\n\nI am, and always have been, a devout Vialist. I obey, and give TThanks to the Glorious, like any good citizen should. This tradition is a comfort to me, and it is what I know. But I indeed have seen cracks. THHe bishops, our symbol of stoic control, have become frantic, and for the first time, unclear and worried about what is next. Keons meant everything to me, and it's not the same without him here. But I'm now seeing that Keons was what I admired, not Vialism. I don't even know what it means to be a Vialist anymore. I see them diffEErently, I see deception. I see rage. Your letter has confirmed some of my doubts, and has begun to ignite a new passion to destroy this construct that has deceived me for so long. You're right, the only glorious guest (quest?) left is beyond these walls. Clancy has exposed cracks that I am now ready to break open. We have to act fast, before the bishops have a chance to react. I aMM willing to take the risk and stand OOn the side of tRRuth.\n\nSahlo,\nJansen"
     },
     {
       "number": 5,
