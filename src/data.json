@@ -188,6 +188,13 @@
       "date": "2024-09-28",
       "location": "",
       "text": "[...] same without him here. [...] Keons was what I admired, [...] even know what it means to be a Vialist anymore. I see them diffEErently, I see deception. I see rage. Your letter has confirmed some of my doubts, and has begun to ignite a new passion to destroy this construct that has deceived me for so long. "
+    },
+    {
+      "number": "006",
+      "clue": "*",
+      "date": "2024-09-29",
+      "location": "Little Caesars Arena - Detroit, MI",
+      "text": "[...] asking you if I hadn't [...] the validity of Vialism. [...] cracks. I'm hoping we can break them open. I hope you join us in destroying this tyranny. I hope you join our quest for actual glory.\n\nSincerely,\nMara"
     }
   ],
   "letters": [
@@ -220,9 +227,9 @@
         "005",
         "006"
       ],
-      "sender": "???",
+      "sender": "Mara",
       "recipient": "Jansen",
-      "decoded": "ROY…",
+      "decoded": "ROY",
       "text": ""
     },
     {
