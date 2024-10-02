@@ -9,9 +9,10 @@ export interface Props {
 	clue: string;
 	number: string;
 	location: string;
+	uncertain?: boolean;
 }
 
-const { text, date, clue, location, number } = Astro.props;
+const { text, date, clue, location, number, uncertain } = Astro.props;
 const formattedDate = format(date, "'0'yy MM'MOON' dd");
 const normalDate = format(date, "dd MMMM yyyy");
 
@@ -26,7 +27,7 @@ const normalDate = format(date, "dd MMMM yyyy");
 
   <p class="location" slot="subheader">{location}</p>
 
-  <Clue clue={number} number={number} hideText={true} slot="image-overlay" />
+  <Clue clue={number} number={number} uncertain={uncertain} hideText={true} slot="image-overlay" />
 </Card>
 
 <style>

@@ -204,7 +204,8 @@
       "text": "Dear Kinton,\n\nI was the girl that put the yEEllow flower in your front pocket as you stood guard. I think I saw a smirk. We notice you daily, and take wagers on what day you'll finally crack. But you stand at your post, solid as a statue, day after day. I must admit it bothered me at first. As I [...] eyes more and more to the CCorruption [...] system that keeps our spirits confined. [...] feel a distaste for every institutional [...] that supports it. I've OOften [...]"
     },
     {
-      "number": "IDK",
+      "number": "030",
+      "uncertain": true,
       "clue": "T",
       "date": "2024-10-02",
       "location": "United Center (Night 2) - Chicago, IL",
@@ -368,6 +369,17 @@
       "sender": "???",
       "recipient": "Karta",
       "decoded": "DO…",
+      "text": ""
+    },
+    {
+      "number": 14,
+      "pieces": [
+        "029",
+        "030"
+      ],
+      "sender": "???",
+      "recipient": "Clancy",
+      "decoded": "…T…",
       "text": ""
     }
   ]

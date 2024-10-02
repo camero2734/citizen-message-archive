@@ -3,16 +3,17 @@
 export interface Props {
 	clue: string;
 	number: string;
+  uncertain?: boolean;
   hideText?: boolean;
 }
 
-const { clue, number } = Astro.props;
+const { clue, number, uncertain } = Astro.props;
 
 ---
 
 <li class="clue">
   <a class="link" href={`#${number}`}>
-    <h2 class="number">{number}</h2>
+    <h2 class="number">{number}{uncertain ? '*' : ''}</h2>
     {
       Astro.props.hideText
         ? null
