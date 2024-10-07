@@ -224,6 +224,14 @@
       "date": "2024-10-05",
       "location": "Nationwide Arena (Night 2) - Columbus, OH",
       "text": "[...] that [...] surface. The [...] and I woUUld [...] you want to teach me? In fact, I'm part of a group that is quite curious, and if you're interested, you could even join us. I'm sure it's lonely down there - SSadened by the gone, as you bend and twist their gravestones. I'm sure you see their faces, or remember your encounters with them. We all miss them, but you have to see them all off. I'm sure it feels wrong at times. I would love to talk about that, ttttoo. We could meeTT in your district if you find a short leave. I can't wait to learn more.\n\nCurious,\nKarta"
+    },
+    {
+      "number": "031",
+      "uncertain": true,
+      "clue": "TER",
+      "date": "2024-10-06",
+      "location": "Nationwide Arena (Night 3) - Columbus, OH",
+      "text": "They believe [...] TThis oppression to end. [...] this archaic rule once and for all. We can meet out in Trench at camp to lay out our plan. We will bring you evEErything you need. We have support from yellow and red now, and our militia is strong. No matter what, when that day comes, we will get you to the toweRR.\n\nCovering you,\nTB"
     }
   ],
   "letters": [
@@ -390,11 +398,12 @@
       "number": 14,
       "pieces": [
         "029",
-        "030"
+        "030",
+        "031"
       ],
-      "sender": "???",
+      "sender": "TB",
       "recipient": "Clancy",
-      "decoded": "…T…",
+      "decoded": "…T…TER",
       "text": ""
     }
   ]
