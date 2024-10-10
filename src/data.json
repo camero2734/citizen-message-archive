@@ -260,8 +260,8 @@
       "number": 1,
       "pieces": [
         "001",
-        "002",
-        "L01"
+        "L01",
+        "002"
       ],
       "sender": "Aria",
       "recipient": "Eliot",
@@ -318,8 +318,8 @@
       "number": 6,
       "pieces": [
         "011",
-        "012",
-        "L02"
+        "L02",
+        "012"
       ],
       "sender": "Leo",
       "recipient": "Nia",
