@@ -246,6 +246,13 @@
       "date": "2024-10-09",
       "location": "Bridgestone Arena - Nashville, TN",
       "text": "[...] and only stains remain. I want to [...] you what I know. Even more, I want to teach you how I believe we can break the cycle.\n\nYours,\nPierre"
+    },
+    {
+      "number": "L06",
+      "clue": "*",
+      "date": "2024-10-10",
+      "location": "Enterprise Center - St. Louis, MO",
+      "text": "[...] You're [...] daily ritual down in this [...] fire and elements to craft a monument for the latest Glorious Gone. I can tell you that after this many years down here, the glory has indeed faded. It's only sadness. There was a time where I believed it was truth, but that time passed, [...] teach [...]"
     }
   ],
   "letters": [
@@ -401,11 +408,12 @@
       "number": 14,
       "pieces": [
         "027",
+        "L06",
         "028"
       ],
       "sender": "Pierre",
       "recipient": "Karta",
-      "decoded": "DO…",
+      "decoded": "DO",
       "text": ""
     },
     {
