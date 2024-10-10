@@ -1,28 +1,33 @@
 ---
-import Piece, { type Props as PieceProps } from '../components/Piece.astro';
-import Clue from '../components/Clue.astro';
-import Layout from '../layouts/Layout.astro';
-import Letter from '../components/Letter.astro';
+import Piece, { type Props as PieceProps } from "../components/Piece.astro";
+import Clue from "../components/Clue.astro";
+import Layout from "../layouts/Layout.astro";
+import Letter from "../components/Letter.astro";
 
-import data from '../data.json' assert { type: 'json' };
+import data from "../data.json" assert { type: "json" };
 
 // Create last updated date in format
-const lastUpdated = new Date().toLocaleString('en-GB', {
-	day: '2-digit',
-	month: 'long',
-	year: 'numeric',
-	hour: '2-digit',
-	minute: '2-digit',
-	second: '2-digit',
-	timeZoneName: 'short',
+const lastUpdated = new Date().toLocaleString("en-GB", {
+	day: "2-digit",
+	month: "long",
+	year: "numeric",
+	hour: "2-digit",
+	minute: "2-digit",
+	second: "2-digit",
+	timeZoneName: "short",
 });
 
-const pieces = data.pieces.map(piece => ({ ...piece, date: new Date(piece.date) }));
-const cardData = pieces.filter(piece => !isNaN(parseInt(piece.number))).sort((a, b) => parseInt(a.number) - parseInt(b.number));
+const pieces = data.pieces.map((piece) => ({
+	...piece,
+	date: new Date(piece.date),
+}));
+const cardData = pieces
+	.filter((piece) => !isNaN(parseInt(piece.number)))
+	.sort((a, b) => parseInt(a.number) - parseInt(b.number));
 
 const allClues: (PieceProps | string)[] = [];
 
-const formatNumber = (number: number) => number.toString().padStart(3, '0');
+const formatNumber = (number: number) => number.toString().padStart(3, "0");
 
 let lastNumber = 0;
 for (const card of cardData) {
@@ -30,14 +35,18 @@ for (const card of cardData) {
 	const number = +card.number;
 
 	if (lastNumber + 1 !== number) {
-		if (lastNumber + 1 === number - 1) allClues.push(formatNumber(lastNumber + 1));
-		else allClues.push(`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`);
+		if (lastNumber + 1 === number - 1)
+			allClues.push(formatNumber(lastNumber + 1));
+		else
+			allClues.push(
+				`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`,
+			);
 	}
 
 	allClues.push(card);
 	lastNumber = number;
 }
-allClues.push(`${formatNumber(lastNumber + 1)}-???`);
+// allClues.push(`${formatNumber(lastNumber + 1)}-???`);
 
 // Remove pieces in letter
 const piecesInLetters = new Set<string>();
@@ -46,25 +55,29 @@ for (const letter of data.letters) {
 	for (const piece of letter.pieces) piecesInLetters.add(piece);
 }
 
-const clues = allClues.filter(c => {
-	if (typeof c === 'string') return true;
+const clues = allClues.filter((c) => {
+	if (typeof c === "string") return true;
 	return !piecesInLetters.has(c.number);
 });
-
-
 ---
 
 <Layout title="Digital Encrypted Message Archive">
 	<main>
 		<h1>Citizen <span class="text-gradient">Message Archive</span></h1>
 		<aside class="disclaimer">
-			<p>Welcome to the <span class="dema">Digital Encrypted Message Archive</span>, an unofficial archive of messages from citizens across Dema.</p>
-			<p class="last-updated"><b>{pieces.length} archived.</b> Last updated: {lastUpdated}</p>
+			<p>
+				Welcome to the <span class="dema"
+					>Digital Encrypted Message Archive</span
+				>, an unofficial archive of messages from citizens across Dema.
+			</p>
+			<p class="last-updated">
+				<b>{pieces.length} archived.</b> Last updated: {lastUpdated}
+			</p>
 		</aside>
 
 		<header class="completed-letters-header">
 			<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
-			
+
 			<div class="checkbox-container">
 				<input id="show-letters" type="checkbox" id="show-letters" />
 				<label for="show-letters">Show Incomplete Letters</label>
@@ -88,16 +101,24 @@ const clues = allClues.filter(c => {
 
 		<h2 class="list-heading" id="collected-clues">Remaining Pieces</h2>
 		<ol class="clues">
-			{clues.map((clue) => typeof clue === "string"
-				? <li class="placeholder">{clue}</li>
-				: <Clue clue={clue.clue} number={clue.number as string} />)}
+			{
+				clues.map((clue) =>
+					typeof clue === "string" ? (
+						<li class="placeholder">{clue}</li>
+					) : (
+						<Clue clue={clue.clue} number={clue.number as string} />
+					),
+				)
+			}
 		</ol>
 
 		<h2 class="list-heading" id="most-recent">Most recent pieces</h2>
 		<ol class="list">
-			{pieces.sort((a, b) => b.date.getTime() - a.date.getTime()).map((card) => (
-				<Piece {...card} />
-			))}
+			{
+				pieces
+					.sort((a, b) => b.date.getTime() - a.date.getTime())
+					.map((card) => <Piece {...card} />)
+			}
 		</ol>
 	</main>
 </Layout>
@@ -197,7 +218,7 @@ const clues = allClues.filter(c => {
 
 	.placeholder {
 		opacity: 0.25;
-		text-shadow: 
+		text-shadow:
 			0 0 2px rgb(var(--accent-light)),
 			0 0 4px rgb(var(--accent)),
 			0 0 6px rgb(var(--accent-dark));
