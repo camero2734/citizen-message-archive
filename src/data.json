@@ -253,6 +253,13 @@
       "date": "2024-10-10",
       "location": "Enterprise Center - St. Louis, MO",
       "text": "[...] You're [...] daily ritual down in this [...] fire and elements to craft a monument for the latest Glorious Gone. I can tell you that after this many years down here, the glory has indeed faded. It's only sadness. There was a time where I believed it was truth, but that time passed, [...] teach [...]"
+    },
+    {
+      "number": "029",
+      "clue": "BE",
+      "date": "2024-10-12",
+      "location": "Target Center - Minneapolis, MN",
+      "text": "Dear Clancy,\n\nYou are what they said you were. I see [...] weathering on your face, and the journey [...] BBeen on. Although we were away, I hope [...] know that I've never left you. [...] in the movEEment, [...]"
     }
   ],
   "letters": [
@@ -425,7 +432,7 @@
       ],
       "sender": "TB",
       "recipient": "Clancy",
-      "decoded": "…TTER",
+      "decoded": "BETTER",
       "text": ""
     }
   ]
