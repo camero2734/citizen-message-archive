@@ -256,10 +256,19 @@
     },
     {
       "number": "029",
+      "uncertain": true,
       "clue": "BE",
       "date": "2024-10-12",
       "location": "Target Center - Minneapolis, MN",
       "text": "Dear Clancy,\n\nYou are what they said you were. I see [...] weathering on your face, and the journey [...] BBeen on. Although we were away, I hope [...] know that I've never left you. [...] in the movEEment, [...]"
+    },
+    {
+      "number": "XX1",
+      "clue": "WARNING",
+      "bishop": true,
+      "date": "2024-10-12T20:06:14.344Z",
+      "location": "The Sacred Municipality of Dema",
+      "text": "THE ENEMIES OF THE CITY ARE PLAN\u200bNING TO TAKE YOUR CITY FROM YOU\n\nWE HAVE WATCHED THEIR PLANS COME TOGETHER\n\nTHE SACRED MUNICIPALITY OF DEMA WIL\u200bL KE\u200bEP YOU SAFE\n\nREPORT ANY UNUSUAL PERIMETER ACTIVITY IM\u200bMEDIATELY"
     }
   ],
   "letters": [
