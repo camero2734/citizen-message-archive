@@ -16,13 +16,13 @@ function toTextPieces(text: string): TextPiece[] {
   for (const line of text.split('\n')) {    
     const split = line
       // Automatically detect double letters
-      .replace(/([A-Z])\1{1}/g, "!![$1$1]!!")
-      // Any additional manual highlighting will be done with !![text]!!
+      .replace(/([A-Z])\1{1}/g, "!![%$1$1%]!!")
+      // Any additional manual highlighting will be done with !![%text%]!!
       .split("!!");
 
     for (const piece of split) {
-      if (piece.startsWith("[") && piece.endsWith("]")) {
-        const text = piece.replace(/[\[\]]/g, "");
+      if (piece.startsWith("[%") && piece.endsWith("%]")) {
+        const text = piece.replace(/[\[\]%]/g, "");
         textPieces.push({
           type: "span",
           text: text,
@@ -39,6 +39,10 @@ function toTextPieces(text: string): TextPiece[] {
       type: "br",
       text: "",
     });
+  }
+
+  if (textPieces.some(p => p.text.includes("fire and elements"))) {
+    console.log(textPieces);
   }
 
   return textPieces;

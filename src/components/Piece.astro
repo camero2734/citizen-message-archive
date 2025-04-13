@@ -18,9 +18,11 @@ const { text, date, clue, location, number, uncertain, tourName } = Astro.props;
 const formattedDate = format(date, "'0'yy MM'MOON' dd");
 const normalDate = format(date, "dd MMMM yyyy");
 
+const normalizedNumber = number.replace(/⠉/g, "A").replace(/⣀/g, "B");
+
 ---
 
-<Card imageName={number} text={text} tourName={tourName}>
+<Card imageName={normalizedNumber} text={text} tourName={tourName}>
   <header slot="header">
 		<p class="date" title={normalDate}>{formattedDate}</p>
 		<p>-</p>

@@ -22,31 +22,56 @@ const pieces = data.pieces.map((piece) => ({
 	date: new Date(piece.date),
 }));
 const cardData = pieces
-	.filter((piece) => !isNaN(parseInt(piece.number)))
-	.sort((a, b) => parseInt(a.number) - parseInt(b.number));
+	.filter((piece) => !Number.isNaN(Number.parseInt(piece.number)))
+	.sort((a, b) => {
+		const numberComparison = Number.parseInt(a.number) - Number.parseInt(b.number);
+		if (numberComparison !== 0) return numberComparison;
+		return a.part === b.part ? 0 : a.part === "TOP" ? -1 : 1;
+	});
 
-const allClues: (Omit<PieceProps, "tourName"> | string)[] = [];
+const allClues: ((Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM"} ) | string)[] = [];
 
-const formatNumber = (number: number) => number.toString().padStart(3, "0");
+const partToSymbol = (part?: string) => {
+	if (part === "TOP") return "⠉";
+	if (part === "BOTTOM") return "⣀";
+	return "";
+};
 
-let lastNumber = 0;
+const encodeNumber = (number: number, part: "TOP" | "BOTTOM"): number => {
+	return number + (part === "TOP" ? 0 : 0.5);
+};
+
+const decodeNumber = (number: number): { number: number; part: "TOP" | "BOTTOM" } => {
+	const part = number % 1 === 0 ? "TOP" : "BOTTOM";
+	return { number: Math.floor(number), part };
+};
+
+const formatNumber = (number: number, part?: "TOP" | "BOTTOM") => `${number.toString().padStart(3, "0")}${partToSymbol(part)}`;
+
+let lastEncodedNumber = -0.5;
 for (const card of cardData) {
-	if (!card.number || isNaN(+card.number)) continue;
+	if (!card.number || Number.isNaN(+card.number)) continue;
 	const number = +card.number;
+	const part = card.part as "TOP" | "BOTTOM";
 
-	if (lastNumber + 1 !== number) {
-		if (lastNumber + 1 === number - 1)
-			allClues.push(formatNumber(lastNumber + 1));
-		else
+	const encodedNumber = encodeNumber(number, part);
+
+	if (lastEncodedNumber + 0.5 !== encodedNumber) {
+		if (lastEncodedNumber + 0.5 === encodedNumber - 0.5) {
+			const decoded = decodeNumber(lastEncodedNumber + 0.5);
+			allClues.push(formatNumber(decoded.number, decoded.part));
+		}	else {
+			const startDecoded = decodeNumber(lastEncodedNumber + 0.5);
+			const endDecoded = decodeNumber(encodedNumber - 0.5);
 			allClues.push(
-				`${formatNumber(lastNumber + 1)}-${formatNumber(number - 1)}`,
+				`${formatNumber(startDecoded.number, startDecoded.part)}-${formatNumber(endDecoded.number, endDecoded.part)}`,
 			);
+		}
 	}
 
-	allClues.push(card);
-	lastNumber = number;
+	allClues.push(card as Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM" });
+	lastEncodedNumber = encodedNumber;
 }
-// allClues.push(`${formatNumber(lastNumber + 1)}-???`);
 
 // Remove pieces in letter
 const piecesInLetters = new Set<string>();
@@ -56,7 +81,7 @@ for (const letter of data.letters) {
 }
 
 const clues = allClues.filter((c) => {
-	if (typeof c === "string") return true;
+	if (typeof c === "string") return !c.startsWith("000");
 	return !piecesInLetters.has(c.number);
 });
 ---
@@ -113,7 +138,7 @@ const clues = allClues.filter((c) => {
 					typeof clue === "string" ? (
 						<li class="placeholder">{clue}</li>
 					) : (
-						<Clue clue={clue.clue} number={clue.number as string} />
+						<Clue clue={clue.clue} number={`${clue.number}${partToSymbol(clue.part)}`} />
 					),
 				)
 			}
@@ -124,7 +149,7 @@ const clues = allClues.filter((c) => {
 			{
 				pieces
 					.sort((a, b) => b.date.getTime() - a.date.getTime())
-					.map((card) => <Piece {...card} tourName="eu" />)
+					.map((card) => <Piece {...card} number={`${card.number}${partToSymbol(card.part)}`} tourName="eu" />)
 			}
 		</ol>
 	</main>

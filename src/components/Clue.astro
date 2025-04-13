@@ -9,10 +9,12 @@ export interface Props {
 
 const { clue, number, uncertain } = Astro.props;
 
+const normalizedNumber = number.replace(/⠉/g, "A").replace(/⣀/g, "B");
+
 ---
 
 <li class="clue">
-  <a class="link" href={`#${number}`}>
+  <a class="link" href={`#${normalizedNumber}`}>
     <h2 class="number">{number}{uncertain ? '*' : ''}</h2>
     {
       Astro.props.hideText
