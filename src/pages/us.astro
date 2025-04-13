@@ -4,7 +4,7 @@ import Clue from "../components/Clue.astro";
 import Layout from "../layouts/Layout.astro";
 import Letter from "../components/Letter.astro";
 
-import data from "../eu.json" assert { type: "json" };
+import data from "../us.json" assert { type: "json" };
 
 // Create last updated date in format
 const lastUpdated = new Date().toLocaleString("en-GB", {
@@ -74,12 +74,6 @@ const clues = allClues.filter((c) => {
 				<b>{pieces.length} archived.</b> Last updated: {lastUpdated}
 			</p>
 		</aside>
-
-		<a class="us-tour" href="/us">
-			<p class="highlighted">WE MUST DESTROY THEM OR WE WILL BECOME THEM. AND IF WE BECOME THEM, WE MUST DO BETTER.</p>
-			<p>View the US Tour letters</p>
-		</a>
-
 
 		<header class="completed-letters-header">
 			<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
@@ -228,34 +222,6 @@ const clues = allClues.filter((c) => {
 			0 0 2px rgb(var(--accent-light)),
 			0 0 4px rgb(var(--accent)),
 			0 0 6px rgb(var(--accent-dark));
-	}
-
-	.us-tour {
-		display: flex;
-		flex-direction: column;
-
-		margin-top: 1em;
-		text-decoration: none;
-
-		font-size: 0.75em;
-
-		.highlighted {
-			font-weight: bold;
-			font-family: 'Courier New', monospace;
-			color: white;
-
-			text-shadow: 
-				0 0 4px rgb(var(--accent-light)),
-				0 0 8px rgb(var(--accent)),
-				0 0 12px rgb(var(--accent-dark));
-		}
-
-		p {
-			color: #777;
-			margin-top: 0;
-			margin-bottom: 0;
-		}
-
 	}
 
 	@media (max-width: 500px) {
