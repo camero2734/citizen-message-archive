@@ -25,7 +25,7 @@ const cardData = pieces
 	.filter((piece) => !isNaN(parseInt(piece.number)))
 	.sort((a, b) => parseInt(a.number) - parseInt(b.number));
 
-const allClues: (PieceProps | string)[] = [];
+const allClues: (Omit<PieceProps, "tourName"> | string)[] = [];
 
 const formatNumber = (number: number) => number.toString().padStart(3, "0");
 
