@@ -9,17 +9,19 @@ export interface Props {
   text: string;
   decoded: string;
 
+  tourName: string;
+
   sender: string;
   recipient: string;
 }
 
-const { page, numbers, text, sender, recipient, decoded } = Astro.props;
+const { page, numbers, text, sender, recipient, decoded, tourName } = Astro.props;
 
 const pageImageName = `page-${page}`;
 
 ---
 
-<Card imageName={pageImageName} text={text} collapsible={true}>
+<Card imageName={pageImageName} text={text} collapsible={true} tourName={tourName}>
   <h2 slot="header">
     <span class="header-main">Letter {page}</span>
     -

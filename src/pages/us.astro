@@ -94,6 +94,7 @@ const clues = allClues.filter((c) => {
 						recipient={letter.recipient}
 						text={letter.text}
 						decoded={letter.decoded}
+						tourName="us"
 					/>
 				))
 			}
@@ -117,7 +118,7 @@ const clues = allClues.filter((c) => {
 			{
 				pieces
 					.sort((a, b) => b.date.getTime() - a.date.getTime())
-					.map((card) => <Piece {...card} />)
+					.map((card) => <Piece {...card} tourName="us" />)
 			}
 		</ol>
 	</main>

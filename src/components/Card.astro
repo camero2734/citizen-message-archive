@@ -7,14 +7,14 @@ export interface Props {
 	text: string;
 	imageName: string;
 	collapsible?: boolean;
+	tourName: string;
 }
 
-const { text, imageName, collapsible } = Astro.props;
+const { text, imageName, collapsible, tourName } = Astro.props;
 
-// TODO
-const image = images[`../images/${imageName}.png`] || images[`../images/${imageName}.jpg`] || images[`../images/001.jpg`];
+const image = images[`../images/${tourName}/${imageName}.png`] || images[`../images/${tourName}/${imageName}.jpg`] || images[`../images/us/001.jpg`];
 if (!image) {
-	throw new Error(`Image not found for ${imageName}`);
+	throw new Error(`Image not found for ${tourName}/${imageName}`);
 }
 
 const imageModule = (await image()).default;

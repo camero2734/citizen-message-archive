@@ -85,7 +85,7 @@ const clues = allClues.filter((c) => {
 			<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
 
 			<div class="checkbox-container">
-				<input id="show-letters" type="checkbox" id="show-letters" />
+				<input id="show-letters" type="checkbox" id="show-letters" checked />
 				<label for="show-letters">Show Incomplete Letters</label>
 			</div>
 		</header>
@@ -100,6 +100,7 @@ const clues = allClues.filter((c) => {
 						recipient={letter.recipient}
 						text={letter.text}
 						decoded={letter.decoded}
+						tourName="eu"
 					/>
 				))
 			}
@@ -123,7 +124,7 @@ const clues = allClues.filter((c) => {
 			{
 				pieces
 					.sort((a, b) => b.date.getTime() - a.date.getTime())
-					.map((card) => <Piece {...card} />)
+					.map((card) => <Piece {...card} tourName="eu" />)
 			}
 		</ol>
 	</main>

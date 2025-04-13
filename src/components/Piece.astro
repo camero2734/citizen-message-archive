@@ -10,15 +10,17 @@ export interface Props {
 	number: string;
 	location: string;
 	uncertain?: boolean;
+
+	tourName: string;
 }
 
-const { text, date, clue, location, number, uncertain } = Astro.props;
+const { text, date, clue, location, number, uncertain, tourName } = Astro.props;
 const formattedDate = format(date, "'0'yy MM'MOON' dd");
 const normalDate = format(date, "dd MMMM yyyy");
 
 ---
 
-<Card imageName={number} text={text}>
+<Card imageName={number} text={text} tourName={tourName}>
   <header slot="header">
 		<p class="date" title={normalDate}>{formattedDate}</p>
 		<p>-</p>

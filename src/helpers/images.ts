@@ -1,1 +1,1 @@
-export const images = import.meta.glob<{ default: ImageMetadata }>(`../images/*`);
+export const images = import.meta.glob<{ default: ImageMetadata }>('../images/**/*');
