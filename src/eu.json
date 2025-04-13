@@ -1,12 +1,12 @@
 {
   "pieces": [
     {
-      "number": "XX1",
+      "number": "001",
       "clue": "*",
       "date": "2025-04-07",
       "bishop": true,
       "location": "Barclays Arena - Hamburg, DE",
-      "text": "CLANCY,\n\nHeYY NEVER FORGET THE CRIES OF YOUR PEOPLE\nNEVER FORGET THE RAW FEAR THE FUELED YOU, OR THE\nREBELS THAT MADE YOU WHO YOU ARE TODAY.\nWE ARE AL\u200bL ONE\nWE DESTROYED THEM SO THAT WE DIDN'T BECOME THEM\nWE MUST DO BET\u200bTER, CLANCY\nWE MUST DO BET\u200bTER.\n\nTB"
+      "text": "CLANCY,\n\nNEVER FORGET THE CRIES OF YOUR PEOPLE\nNEVER FORGET THE RAW FEAR THE FUELED YOU, OR THE\nREBELS THAT MADE YOU WHO YOU ARE TODAY.\nWE ARE AL\u200bL ONE\nWE DESTROYED THEM SO THAT WE DIDN'T BECOME THEM\nWE MUST DO BET\u200bTER, CLANCY\nWE MUST DO BET\u200bTER.\n\nTB"
     },
     {
       "number": "005",
@@ -38,6 +38,35 @@
     }
   ],
   "letters": [
-
+    {
+      "number": 1,
+      "pieces": [
+        "001"
+      ],
+      "sender": "TB",
+      "recipient": "Clancy",
+      "decoded": "*",
+      "text":"CLANCY,\n\nNEVER FORGET THE CRIES OF YOUR PEOPLE\nNEVER FORGET THE RAW FEAR THE FUELED YOU, OR THE\nREBELS THAT MADE YOU WHO YOU ARE TODAY.\nWE ARE AL\u200bL ONE\nWE DESTROYED THEM SO THAT WE DIDN'T BECOME THEM\nWE MUST DO BET\u200bTER, CLANCY\nWE MUST DO BET\u200bTER.\n\nTB"
+    },
+    {
+      "number": 2,
+      "pieces": [
+        "002"
+      ],
+      "sender": "???",
+      "recipient": "Carmen",
+      "decoded": "???",
+      "text": ""
+    },
+    {
+      "number": 3,
+      "pieces": [
+        "XX2"
+      ],
+      "sender": "Carmen",
+      "recipient": "???",
+      "decoded": "…N",
+      "text": ""
+    }
   ]
 }
