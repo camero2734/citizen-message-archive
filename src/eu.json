@@ -6,7 +6,7 @@
       "date": "2025-04-07",
       "bishop": true,
       "location": "Barclays Arena - Hamburg, DE",
-      "text": "CLANCY,\n\nNEVER FORGET THE CRIES OF YOUR PEOPLE\nNEVER FORGET THE RAW FEAR THE FUELED YOU, OR THE\nREBELS THAT MADE YOU WHO YOU ARE TODAY.\nWE ARE AL\u200bL ONE\nWE DESTROYED THEM SO THAT WE DIDN'T BECOME THEM\nWE MUST DO BET\u200bTER, CLANCY\nWE MUST DO BET\u200bTER.\n\nTB"
+      "text": "CLANCY,\n\nHeYY NEVER FORGET THE CRIES OF YOUR PEOPLE\nNEVER FORGET THE RAW FEAR THE FUELED YOU, OR THE\nREBELS THAT MADE YOU WHO YOU ARE TODAY.\nWE ARE AL\u200bL ONE\nWE DESTROYED THEM SO THAT WE DIDN'T BECOME THEM\nWE MUST DO BET\u200bTER, CLANCY\nWE MUST DO BET\u200bTER.\n\nTB"
     },
     {
       "number": "005",
@@ -26,8 +26,15 @@
       "number": "006",
       "clue": "*",
       "date": "2025-04-12",
-      "location": "Accor Arena - Paris, FR",
+      "location": "O2 Arena - Prague, CZ",
       "text": "Gwen,\nCheer up! We're not there anymore! We've regained control of our lives and our choices, and we should look back upon Dema in Triumph. Without it, we would have never learned to fight. Without it, we would have [...] The pain of that place makes these [...]"
+    },
+    {
+      "number": "XX2",
+      "clue": "N",
+      "date": "2025-04-13",
+      "location": "Wiener Stadthalle - Vienna, AT",
+      "text": "[...] a reverberation of subtle memory that calms me and lets me know that I am home. I rely on it, and I think we all need it. I'm grateful for scarves to warm my face, and coats to insulate me, but this everlasting melody that you send through these mountains, it covers me. It covers all of us. It reminds us who we are, and what it means to be free. I hope you're okay. I hope to hear you play again.\n\nListening always,\nCarmen\n!![-.]!!"
     }
   ],
   "letters": [

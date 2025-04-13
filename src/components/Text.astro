@@ -1,5 +1,6 @@
 ---
 
+
 export interface Props {
 	content: string;
 }
@@ -10,16 +11,21 @@ interface TextPiece {
 }
 
 function toTextPieces(text: string): TextPiece[] {
-  let textPieces: TextPiece[] = [];
+  const textPieces: TextPiece[] = [];
 
-  text.split('\n').forEach((line) => {
-    const split = line.split(/([A-Z])\1{1}/);
+  for (const line of text.split('\n')) {    
+    const split = line
+      // Automatically detect double letters
+      .replace(/([A-Z])\1{1}/g, "!![$1$1]!!")
+      // Any additional manual highlighting
+      .split("!!");
 
     for (const piece of split) {
-      if (piece.length === 1 && piece.match(/[A-Z]/)) {
+      if (piece.startsWith("[") && piece.endsWith("]")) {
+        const text = piece.replace(/[\[\]]/g, "");
         textPieces.push({
           type: "span",
-          text: piece,
+          text: text,
         });
       } else if (piece) {
         textPieces.push({
@@ -33,9 +39,7 @@ function toTextPieces(text: string): TextPiece[] {
       type: "br",
       text: "",
     });
-  });
-
-  console.log(textPieces);
+  }
 
   return textPieces;
 }
@@ -51,7 +55,7 @@ const textPieces = toTextPieces(Astro.props.content);
       ? <p>{piece.text}</p>
       : piece.type === "br" 
         ? <br />
-        : <span class="double">{piece.text}{piece.text}</span>
+        : <span class="double">{piece.text}</span>
   ))}
 </div>
 
