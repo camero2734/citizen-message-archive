@@ -11,7 +11,6 @@ const { clue, number, uncertain } = Astro.props;
 
 const numberWithoutSuffix = number.replace(/[AB]$/, "");
 const suffix = number.replace(numberWithoutSuffix, "");
-console.log({number, numberWithoutSuffix, suffix});
 
 ---
 
