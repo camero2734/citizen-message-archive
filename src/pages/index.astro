@@ -32,8 +32,8 @@ const cardData = pieces
 const allClues: ((Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM"} ) | string)[] = [];
 
 const partToSymbol = (part?: string) => {
-	if (part === "TOP") return "⠉";
-	if (part === "BOTTOM") return "⣀";
+	if (part === "TOP") return "A";
+	if (part === "BOTTOM") return "B";
 	return "";
 };
 

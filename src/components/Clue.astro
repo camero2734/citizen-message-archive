@@ -9,13 +9,19 @@ export interface Props {
 
 const { clue, number, uncertain } = Astro.props;
 
-const normalizedNumber = number.replace(/⠉/g, "A").replace(/⣀/g, "B");
+const numberWithoutSuffix = number.replace(/[AB]$/, "");
+const suffix = number.replace(numberWithoutSuffix, "");
+console.log({number, numberWithoutSuffix, suffix});
 
 ---
 
 <li class="clue">
-  <a class="link" href={`#${normalizedNumber}`}>
-    <h2 class="number">{number}{uncertain ? '*' : ''}</h2>
+  <a class="link" href={`#${number}`}>
+    <h2 class="number">
+      {numberWithoutSuffix.trim()}{uncertain ? '*' : ''}
+      {suffix === "A" && <span class="suffix suffix-a">TOP</span>}
+      {suffix === "B" && <span class="suffix suffix-b">END</span>}
+    </h2>
     {
       Astro.props.hideText
         ? null
@@ -26,18 +32,20 @@ const normalizedNumber = number.replace(/⠉/g, "A").replace(/⣀/g, "B");
 <style>
 
 .link, .text {
-  display: inline;
+  display: inline-block;
   color: inherit;
   font-weight: bold;
   text-decoration: none;
+  margin: 0;
 }
 
 .number {
-  display: inline;
+  position: relative;
+  display: inline-block;
   font-size: inherit;
 
   color: white;
-  margin-bottom: 0;
+  margin: 0;
   text-shadow: 0 0 5px rgba(0, 0, 0, 1);
   padding: 4px;
 
@@ -48,5 +56,17 @@ const normalizedNumber = number.replace(/⠉/g, "A").replace(/⣀/g, "B");
 
   background-size: 400%;
   border-radius: 5px;
+}
+
+.suffix {
+  position: absolute;
+  text-align: right;
+  font-size: 0.5em;
+  top: 0;
+  right: 4px;
+}
+.suffix-b {
+  top: unset;
+  bottom: 0;
 }
 </style>
