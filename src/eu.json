@@ -39,6 +39,14 @@
       "date": "2025-04-13",
       "location": "Wiener Stadthalle - Vienna, AT",
       "text": "[...] a reverberation of subtle memory that calms me and lets me know that I am home. I rely on it, and I think we all need it. I'm grateful for scarves to warm my face, and coats to insulate me, but this everlasting melody that you send through these mountains, it covers me. It covers all of us. It reminds us who we are, and what it means to be free. I hope you're okay. I hope to hear you play again.\n\nListening always,\nCarmen\n!![%-.%]!!"
+    },
+    {
+      "number": "001",
+      "part": "TOP",
+      "clue": "*",
+      "date": "2025-04-16",
+      "location": "Hallenstadion - Zurich, CH",
+      "text": "Soren,\nFor the first time in a long time, I didn't hear your song last night. Something so consistent and reliable, I realized that I take it for granted, so much more evident last night when I heard silence. But we need it. Your strings echo out from the valley and hit my tent just right. It's become my serenade in these hills - [...]"
     }
   ],
   "letters": [
@@ -55,12 +63,13 @@
     {
       "number": 1,
       "pieces": [
+        "001A",
         "001B"
       ],
       "sender": "Carmen",
-      "recipient": "???",
-      "decoded": "…",
-      "text": ""
+      "recipient": "Soren",
+      "decoded": "N",
+      "text": "Soren,\nFor the first time in a long time, I didn't hear your song last night. Something so consistent and reliable, I realized that I take it for granted, so much more evident last night when I heard silence. But we need it. Your strings echo out from the valley and hit my tent just right. It's become my serenade in these hills - a reverberation of subtle memory that calms me and lets me know that I am home. I rely on it, and I think we all need it. I'm grateful for scarves to warm my face, and coats to insulate me, but this everlasting melody that you send through these mountains, it covers me. It covers all of us. It reminds us who we are, and what it means to be free. I hope you're okay. I hope to hear you play again.\n\nListening always,\nCarmen\n!![%-.%]!!"
     },
     {
       "number": 2,
