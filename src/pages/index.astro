@@ -80,10 +80,15 @@ for (const letter of data.letters) {
 	for (const piece of letter.pieces) piecesInLetters.add(piece);
 }
 
+console.log({ piecesInLetters });
+
 const clues = allClues.filter((c) => {
 	if (typeof c === "string") return !c.startsWith("000");
-	return !piecesInLetters.has(c.number);
+	const actualNumber = `${c.number}${partToSymbol(c.part)}`;
+	return !piecesInLetters.has(actualNumber);
 });
+
+clues.push("006B-???");
 ---
 
 <Layout title="Digital Encrypted Message Archive">
@@ -131,7 +136,7 @@ const clues = allClues.filter((c) => {
 			}
 		</ol>
 
-		<h2 class="list-heading" id="collected-clues">Remaining Pieces</h2>
+		<h2 class="list-heading" id="collected-clues" title="These are pieces that aren't in a completed letter">Remaining Pieces</h2>
 		<ol class="clues">
 			{
 				clues.map((clue) =>
