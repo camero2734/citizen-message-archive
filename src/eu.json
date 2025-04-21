@@ -53,8 +53,16 @@
       "part": "BOTTOM",
       "clue": "N",
       "date": "2025-04-17",
-      "location": "Unipol Arena - Bologna, Italy",
+      "location": "Unipol Arena - Bologna, IT",
       "text": "[...] We are all one people, and people striving for hope and victory, not more tyranny. Clancy must know that!\n\nFraught,\nMagnus\n!![%-.%]!!"
+    },
+    {
+      "number": "003",
+      "part": "TOP",
+      "clue": "*",
+      "date": "2025-04-21",
+      "location": "Movistar Arena - Madrid, ES",
+      "text": "Brikka,\n\nI've found something Towards the bottom of the East Canyon. near the base of the Vulture Tree is a small cave. I've been coming back to it for the last few days, trying to document everything I can. The walls are filled with art and symbols. It looks old, like very old. Some of the art is stained into the stone, and some was carved - but carved [...] to now be weathered and smoothed over. [...]"
     }
   ],
   "letters": [
@@ -92,10 +100,10 @@
     {
       "number": 3,
       "pieces": [
-
+        "003A"
       ],
       "sender": "???",
-      "recipient": "???",
+      "recipient": "Brikka",
       "decoded": "…",
       "text": ""
     },
