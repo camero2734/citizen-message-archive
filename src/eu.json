@@ -63,6 +63,14 @@
       "date": "2025-04-21",
       "location": "Movistar Arena - Madrid, ES",
       "text": "Brikka,\n\nI've found something. Towards the bottom of the East Canyon, near the base of the Vulture Tree is a small cave. I've been coming back to it for the last few days, trying to document everything I can. The walls are filled with art and symbols. It looks old, like very old. Some of the art is stained into the stone, and some was carved - but carved [...] to now be weathered and smoothed over. [...]"
+    },
+    {
+      "number": "008",
+      "part": "TOP",
+      "clue": "*",
+      "date": "2025-04-22",
+      "location": "Palau Sant Jordi, Barcelona, ES",
+      "text": "Wendt,\n\nI rememeber that day. A rare moment of Chaos inside the perfect walls of Dema. I'm glad he caught you, but I have to admit I find it appalling to see you write about a Bishop the way you have. They berate us, but [...] It's hard to tell if we [...]"
     }
   ],
   "letters": [
@@ -134,6 +142,26 @@
       ],
       "sender": "???",
       "recipient": "Gwen",
+      "decoded": "…",
+      "text": ""
+    },
+    {
+      "number": 7,
+      "pieces": [
+
+      ],
+      "sender": "???",
+      "recipient": "???",
+      "decoded": "…",
+      "text": ""
+    },
+    {
+      "number": 8,
+      "pieces": [
+        "008A"
+      ],
+      "sender": "???",
+      "recipient": "Wendt",
       "decoded": "…",
       "text": ""
     }
