@@ -172,6 +172,16 @@
       "recipient": "Wendt",
       "decoded": "…",
       "text": ""
+    },
+    {
+      "number": 9,
+      "pieces": [
+        "009A"
+      ],
+      "sender": "???",
+      "recipient": "Magnus",
+      "decoded": "…",
+      "text": ""
     }
   ]
 }
