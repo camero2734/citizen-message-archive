@@ -49,7 +49,7 @@
       "text": "Soren,\n\nFor the first time in a long time, I didn't hear your song last night. Something so consistent and reliable, I realized that I take it for granted, so much more evident last night when I heard silence. But we need it. Your strings echo out from the valley and hit my tent just right. It's become my serenade in these hills - [...]"
     },
     {
-      "number": "XX1",
+      "number": "010",
       "part": "BOTTOM",
       "clue": "N",
       "date": "2025-04-17",
@@ -190,6 +190,16 @@
       "sender": "???",
       "recipient": "Magnus",
       "decoded": "…",
+      "text": ""
+    },
+    {
+      "number": 10,
+      "pieces": [
+        "010B"
+      ],
+      "sender": "Magnus",
+      "recipient": "???",
+      "decoded": "…N",
       "text": ""
     }
   ]
