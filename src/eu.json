@@ -86,7 +86,7 @@
       "clue": "*",
       "date": "2025-04-27",
       "location": "Accor Arena - Paris, FR",
-      "text": "[...] unnaturally? Would we be different? Would we be less guarded, and less tormented? What would we dream of? I often stare at those nine posts of arrogance and wonder what the truly took for me. I don't know -- just wondering if you've ever found yourself as fascinated with the thought of an alternate horizon, or maybe I need to get to sleep.\n\n-Gwen"
+      "text": "[...] unnaturally? Would we be different? Would we be less guarded, and less tormented? What would we dream of? I often stare at those nine posts of arrogance and wonder what they truly took for me. I don't know -- just wondering if you've ever found yourself as fascinated with the thought of an alternate horizon, or maybe I need to get to sleep.\n\n-Gwen"
     }
   ],
   "letters": [
@@ -144,12 +144,13 @@
     {
       "number": 5,
       "pieces": [
-        "005A"
+        "005A",
+        "005B"
       ],
-      "sender": "???",
+      "sender": "Gwen",
       "recipient": "Hilt",
-      "decoded": "…",
-      "text": ""
+      "decoded": "*",
+      "text": "Hilt,\n\nDo you ever stare at the horizon, wondering what it would look like without Dema's silhouette? An unending line of beauty, uninterrupted by the system that polluted us. What would it have been like to have been born out here and never forced into living so unnaturally? Would we be different? Would we be less guarded, and less tormented? What would we dream of? I often stare at those nine posts of arrogance and wonder what they truly took for me. I don't know -- just wondering if you've ever found yourself as fascinated with the thought of an alternate horizon, or maybe I need to get to sleep.\n\n-Gwen"
     },
     {
       "number": 6,
