@@ -95,6 +95,30 @@
       "date": "2025-04-28",
       "location": "Unipol Forum, Bologna, IT",
       "text": "[...] importantly [...] to admit that I fell asleep for a second last night. I was so worried of dozing off again, that I didn't play music, just stood at attention all night, looking over the hill. I don't want to miss the signal. I haven't lost faith in the plan, and I know the signal is coming, but some nights it's hard to stay awake. I'll keep playing. Sometime, if you're not too tired, I would love company. Four eyes are better than two -- and they should give us the sign any day now.\n\nSteadfast,\nSoren\n!![%..%]!!"
+    },
+    {
+      "number": "007",
+      "part": "TOP",
+      "clue": "*",
+      "date": "2025-04-30",
+      "location": "Ziggo Dome, Amsterdam, NL",
+      "text": "Tari,\n\nI found myself reminiscing about Bishop Nills last night. A long while back he actually rescued me from nearly falling back through a window while playing tug-o-war in class. He was there and he caught me. I looked up at him and the relief in his eyes that I was alright caught me so off-guard. In that moment he cared for me. He wasn't as devoid [...] There was no tension - [...]"
+    },
+    {
+      "number": "006",
+      "part": "BOTTOM",
+      "clue": "E",
+      "date": "2025-05-01",
+      "location": "Lanxess Arena, Cologne, DE",
+      "text": "[...] taken all of this freedom for granted [...] wild hills and caves more of a retreat. We are ourselves out here, and we would have never found it without them. You defeated that place, and I'm proud of you.\n\n-Hilt\n!![%.%]!!"
+    },
+    {
+      "number": "004",
+      "part": "TOP",
+      "clue": "*",
+      "date": "2025-05-02",
+      "location": "Accor Arena, Paris, FR",
+      "text": "Dear Preston,\n\nI can't wait to see it. I've always wondered who inhabited these hills before us. This is one of the most crippling elements of Vialism, that they withold the past from us, and try to make us believe their teaching [...] there have ever been. It means [...]"
     }
   ],
   "letters": [
@@ -163,11 +187,12 @@
     {
       "number": 6,
       "pieces": [
-        "006A"
+        "006A",
+        "006B"
       ],
       "sender": "???",
       "recipient": "Gwen",
-      "decoded": "…",
+      "decoded": "Hilt",
       "text": ""
     },
     {
