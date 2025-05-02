@@ -146,7 +146,8 @@
     {
       "number": 2,
       "pieces": [
-        "002A"
+        "002A",
+        "002B"
       ],
       "sender": "Soren",
       "recipient": "Carmen",
@@ -166,7 +167,7 @@
     {
       "number": 4,
       "pieces": [
-
+        "004A"
       ],
       "sender": "Brikka",
       "recipient": "Preston",
