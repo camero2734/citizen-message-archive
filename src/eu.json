@@ -183,12 +183,13 @@
     {
       "number": 4,
       "pieces": [
-        "004A"
+        "004A",
+        "004B"
       ],
       "sender": "Brikka",
       "recipient": "Preston",
-      "decoded": "…",
-      "text": ""
+      "decoded": "N",
+      "text": "Dear Preston,\n\nI can't wait to see it. I've always wondered who inhabited these hills before us. This is one of the most crippling elements of Vialism, that they withold the past from us, and try to make us believe their teachings are all that there have ever been. It means that we are not the first to leave Dema, and to rebel against that system. How long has this system existed? How long have these hills been inhabited. What else is out there in Trench? The hunt for answers continues.\n\n-Brikka\n!![%-.%]!!"
     },
     {
       "number": 5,
