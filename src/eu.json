@@ -35,7 +35,7 @@
     {
       "number": "001",
       "part": "BOTTOM",
-      "clue": "N",
+      "clue": "-.",
       "date": "2025-04-13",
       "location": "Wiener Stadthalle - Vienna, AT",
       "text": "[...] a reverberation of subtle memory that calms me and lets me know that I am home. I rely on it, and I think we all need it. I'm grateful for scarves to warm my face, and coats to insulate me, but this everlasting melody that you send through these mountains, it covers me. It covers all of us. It reminds us who we are, and what it means to be free. I hope you're okay. I hope to hear you play again.\n\nListening always,\nCarmen\n!![%-.%]!!"
@@ -51,7 +51,7 @@
     {
       "number": "010",
       "part": "BOTTOM",
-      "clue": "N",
+      "clue": "-.",
       "date": "2025-04-17",
       "location": "Unipol Arena - Bologna, IT",
       "text": "[...] We are all one people, and people striving for hope and victory, not more tyranny. Clancy must know that!\n\nFraught,\nMagnus\n!![%-.%]!!"
@@ -91,7 +91,7 @@
     {
       "number": "002",
       "part": "BOTTOM",
-      "clue": "I",
+      "clue": "..",
       "date": "2025-04-28",
       "location": "Unipol Forum, Bologna, IT",
       "text": "[...] importantly [...] to admit that I fell asleep for a second last night. I was so worried of dozing off again, that I didn't play music, just stood at attention all night, looking over the hill. I don't want to miss the signal. I haven't lost faith in the plan, and I know the signal is coming, but some nights it's hard to stay awake. I'll keep playing. Sometime, if you're not too tired, I would love company. Four eyes are better than two -- and they should give us the sign any day now.\n\nSteadfast,\nSoren\n!![%..%]!!"
@@ -107,7 +107,7 @@
     {
       "number": "006",
       "part": "BOTTOM",
-      "clue": "E",
+      "clue": ".",
       "date": "2025-05-01",
       "location": "Lanxess Arena, Cologne, DE",
       "text": "[...] taken all of this freedom for granted [...] wild hills and caves more of a retreat. We are ourselves out here, and we would have never found it without them. You defeated that place, and I'm proud of you.\n\n-Hilt\n!![%.%]!!"
@@ -123,7 +123,7 @@
     {
       "number": "008",
       "part": "BOTTOM",
-      "clue": "T",
+      "clue": "-",
       "date": "2025-05-05",
       "location": "The OVO Hydro, Glasgow, UK",
       "text": "[...] also claim to protect us [...] are hated or loved. If it is love, it's a form that I cannot recognize, and it's a form that certainly doesn't feel like love. It all feels like a trap. Not sure I've wondered about who the bishops were as kids, or even if they ever were kids. As I get older, I question their age more and more.\n\n-Tari\n!![%-%]!!"
@@ -131,7 +131,7 @@
     {
       "number": "004",
       "part": "BOTTOM",
-      "clue": "N",
+      "clue": "-.",
       "date": "2025-05-06",
       "location": "bp pulse LIVE, Birmingham, UK",
       "text": "[...] are all [...] that we are not the first to leave Dema, and to rebel against that system. How long has this system existed? How long have these hills been inhabited. What else is out there in Trench? The hunt for answers continues.\n\n-Brikka\n!![%-.%]!!"
@@ -139,7 +139,7 @@
     {
       "number": "009",
       "part": "BOTTOM",
-      "clue": "N",
+      "clue": "-.",
       "date": "2025-05-08",
       "location": "The SSE Arena, Belfast, UK",
       "text": "[...] They distracted everyone, and now Clancy is in. He is what he told us he was. He has led us all to this moment, and it's his time to take over. Clancy will be even more powerful than Nico. They have no idea what is coming.\n\nVictorious,\nBaldur\n!![%-.%]!!"
@@ -147,7 +147,7 @@
     {
       "number": "003",
       "part": "BOTTOM",
-      "clue": "E",
+      "clue": ".",
       "date": "2025-05-09",
       "location": "3Arena, Dublin, IE",
       "text": "[...] long enough ago [...] But my perspective has changed now - about us, and about all of this. This fight against Vialism is not new, and our rebellion, it appears, has been going  on for ages. In a sense, I'm inspired, but I'm also slightly disheartened to know that the struggle appears to be endless. I hope you can meet me here soon. I can't wait for you to see it.\n\n-Preston\n!![%.%]!!"
@@ -180,7 +180,7 @@
       ],
       "sender": "Carmen",
       "recipient": "Soren",
-      "decoded": "N",
+      "decoded": "-.",
       "text": "Soren,\n\nFor the first time in a long time, I didn't hear your song last night. Something so consistent and reliable, I realized that I take it for granted, so much more evident last night when I heard silence. But we need it. Your strings echo out from the valley and hit my tent just right. It's become my serenade in these hills - a reverberation of subtle memory that calms me and lets me know that I am home. I rely on it, and I think we all need it. I'm grateful for scarves to warm my face, and coats to insulate me, but this everlasting melody that you send through these mountains, it covers me. It covers all of us. It reminds us who we are, and what it means to be free. I hope you're okay. I hope to hear you play again.\n\nListening always,\nCarmen\n!![%-.%]!!"
     },
     {
@@ -191,7 +191,7 @@
       ],
       "sender": "Soren",
       "recipient": "Carmen",
-      "decoded": "I",
+      "decoded": "..",
       "text": "Carmen,\n\nI'm still here. Thank you for your letter. At times, I feel so isolated in front of that small fire that I forget people are listening. It's usually just me up there, a watcher without a partner -- trying to keep myself awake by noodling on this instrument. So I speak to someone, to all of you. I'm glad to know you hear it, and more importantly that it's important. I'm embarrassed to admit that I fell asleep for a second last night. I was so worried of dozing off again, that I didn't play music, just stood at attention all night, looking over the hill. I don't want to miss the signal. I haven't lost faith in the plan, and I know the signal is coming, but some nights it's hard to stay awake. I'll keep playing. Sometime, if you're not too tired, I would love company. Four eyes are better than two -- and they should give us the sign any day now.\n\nSteadfast,\nSoren\n!![%..%]!!"
     },
     {
@@ -202,7 +202,7 @@
       ],
       "sender": "Preston",
       "recipient": "Brikka",
-      "decoded": "E",
+      "decoded": ".",
       "text": "Brikka,\n\nI've found something. Towards the bottom of the East Canyon, near the base of the Vulture Tree is a small cave. I've been coming back to it for the last few days, trying to document everything I can. The walls are filled with art and symbols. It looks old, like very old. Some of the art is stained into the stone, and some was carved - but carved long enough ago to now be weathered and smoothed over. But my perspective has changed now - about us, and about all of this. This fight against Vialism is not new, and our rebellion, it appears, has been going on for ages. In a sense, I'm inspired, but I'm also slightly disheartened to know that the struggle appears to be endless. I hope you can meet me here soon. I can't wait for you to see it.\n\n-Preston\n!![%.%]!!"
     },
     {
@@ -213,7 +213,7 @@
       ],
       "sender": "Brikka",
       "recipient": "Preston",
-      "decoded": "N",
+      "decoded": "-.",
       "text": "Dear Preston,\n\nI can't wait to see it. I've always wondered who inhabited these hills before us. This is one of the most crippling elements of Vialism, that they withold the past from us, and try to make us believe their teachings are all that there have ever been. It means that we are not the first to leave Dema, and to rebel against that system. How long has this system existed? How long have these hills been inhabited. What else is out there in Trench? The hunt for answers continues.\n\n-Brikka\n!![%-.%]!!"
     },
     {
@@ -235,7 +235,7 @@
       ],
       "sender": "Hilt",
       "recipient": "Gwen",
-      "decoded": "E",
+      "decoded": ".",
       "text": "Gwen,\n\nCheer up! We're not there anymore! We've regained control of our lives and our choices, and we should look back upon Dema in Triumph. Without it, we would have never learned to fight. Without it, we would have taken all of this freedom for granted. The pain of that place makes these wild hills and caves more of a retreat. We are ourselves out here, and we would have never found it without them. You defeated that place, and I'm proud of you.\n\n-Hilt\n!![%.%]!!"
     },
     {
@@ -256,7 +256,7 @@
       ],
       "sender": "Tari",
       "recipient": "Wendt",
-      "decoded": "T",
+      "decoded": "-",
       "text": "Wendt,\n\nI remember that day. A rare moment of Chaos inside the perfect walls of Dema. I'm glad he caught you, but I have to admit I find it appalling to see you write about a Bishop the way you have. They berate us, but also claim to protect us. It's hard to tell if we are hated or loved. If it is love, it's a form that I cannot recognize, and it's a form that certainly doesn't feel like love. It all feels like a trap. Not sure I've wondered about who the bishops were as kids, or even if they ever were kids. As I get older, I question their age more and more.\n\n-Tari\n!![%-%]!!"
     },
     {
@@ -267,7 +267,7 @@
       ],
       "sender": "Baldur",
       "recipient": "Magnus",
-      "decoded": "N",
+      "decoded": "-.",
       "text": "Magnus,\n\nI assume you're back at base. We've found a spot on the outer perimeter of Dema, and set up camp here. We arrived thinking we would log the routines of the guards, and report back with their schedule. But things are moving fast.\n\nMagnus! Clancy has done it! The front line was able to push through the guards, while he found a way into the city. They distracted everyone, and now Clancy is in. He is what he told us he was. He has led us all to this moment, and it's his time to take over. Clancy will be even more powerful than Nico. They have no idea what is coming.\n\nVictorious,\nBaldur\n!![%-.%]!!"
     },
     {
@@ -278,8 +278,16 @@
       ],
       "sender": "Magnus",
       "recipient": "Baldur",
-      "decoded": "N",
+      "decoded": "-.",
       "text": "Baldur,\n\nI'm happy to hear the movement has progressed, but I'm worried about your desire for Clancy to be more powerful than Nico. Is this what you wanted? Is this what any of us wanted? Nico's power is the element that has given Dema and Vialism such an iron fist. More power, even if it's Clancy's power, will corrupt the movement we've fought so hard to bring to Dema. We are all one people, and people striving for hope and victory, not more tyranny. Clancy must know that!\n\nFraught,\nMagnus\n!![%-.%]!!"
+    },
+    {
+      "number": 11,
+      "pieces": [],
+      "sender": "???",
+      "recipient": "???",
+      "decoded": "*",
+      "text": ""
     }
   ]
 }
