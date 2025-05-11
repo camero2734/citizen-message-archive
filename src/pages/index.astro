@@ -159,12 +159,15 @@ const formatMorse = (morse: string) => `${decodeMorse(morse)} | ${morse}`;
 			<p class="last-updated">
 				<b>{pieces.length} archived.</b> Last updated: {lastUpdated}
 			</p>
+
 		</aside>
 
 		<a class="us-tour" href="/us">
 			<p class="highlighted">WE MUST DESTROY THEM OR WE WILL BECOME THEM. AND IF WE BECOME THEM, WE MUST DO BETTER.</p>
 			<p>View the US Tour letters</p>
 		</a>
+
+		<p class="follow">Follow us for live updates <a href="https://twitter.com/insidedema">on Twitter</a></p>
 
 
 		<header class="completed-letters-header">
@@ -345,6 +348,11 @@ const formatMorse = (morse: string) => `${decodeMorse(morse)} | ${morse}`;
 		margin-bottom: 0;
 	}
 
+	.follow {
+		margin-top: 2em;
+		font-size: 0.75em;
+	}
+
 	.last-updated {
 		font-size: 0.8em;
 	}
@@ -379,7 +387,7 @@ const formatMorse = (morse: string) => `${decodeMorse(morse)} | ${morse}`;
 
 	}
 
-	.us-tour .highlighted, .letter-pair .pair-decoded {
+	.us-tour .highlighted, .letter-pair .pair-decoded, .follow a {
 		font-weight: bold;
 		font-family: 'Courier New', monospace;
 		color: white;
