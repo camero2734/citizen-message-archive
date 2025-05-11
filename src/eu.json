@@ -143,6 +143,14 @@
       "date": "2025-05-08",
       "location": "The SSE Arena, Belfast, UK",
       "text": "[...] They distracted everyone, and now Clancy is in. He is what he told us he was. He has led us all to this moment, and it's his time to take over. Clancy will be even more powerful than Nico. They have no idea what is coming.\n\nVictorious,\nBaldur\n!![%-.%]!!"
+    },
+    {
+      "number": "003",
+      "part": "BOTTOM",
+      "clue": "E",
+      "date": "2025-05-09",
+      "location": "3Arena, Dublin, IE",
+      "text": "[...] long enough ago [...] But my perspective has changed now - about us, and about all of this. This fight against Vialism is not new, and our rebellion, it appears, has been going  on for ages. In a sense, I'm inspired, but I'm also slightly disheartened to know that the struggle appears to be endless. I hope you can meet me here soon. I can't wait for you to see it.\n\n-Preston\n!![%.%]!!"
     }
   ],
   "letters": [
@@ -181,12 +189,13 @@
     {
       "number": 3,
       "pieces": [
-        "003A"
+        "003A",
+        "003B"
       ],
       "sender": "Preston",
       "recipient": "Brikka",
-      "decoded": "…",
-      "text": ""
+      "decoded": "E",
+      "text": "Brikka,\n\nI've found something. Towards the bottom of the East Canyon, near the base of the Vulture Tree is a small cave. I've been coming back to it for the last few days, trying to document everything I can. The walls are filled with art and symbols. It looks old, like very old. Some of the art is stained into the stone, and some was carved - but carved long enough ago to now be weathered and smoothed over. But my perspective has changed now - about us, and about all of this. This fight against Vialism is not new, and our rebellion, it appears, has been going on for ages. In a sense, I'm inspired, but I'm also slightly disheartened to know that the struggle appears to be endless. I hope you can meet me here soon. I can't wait for you to see it.\n\n-Preston\n!![%.%]!!"
     },
     {
       "number": 4,
