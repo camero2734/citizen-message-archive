@@ -133,17 +133,18 @@ const morseCode = {
 
 const encodeMorse = (char: string) => {
 	const morse = morseCode[char.toUpperCase() as keyof typeof morseCode];
-	if (!morse) return "?";
+	if (!morse) return " ";
 	return morse;
 };
 const decodeMorse = (morse: string) => {
+	if (morse === "*") return "█";
 	const replaced = morse.replaceAll("*", "");
 	const entry = Object.entries(morseCode).find(([_, v]) => v === replaced);
 	if (!entry) return "?";
 	return entry[0];
 };
 
-const formatMorse = (morse: string) => `${decodeMorse(morse)} | ${morse.replaceAll("*", "")}`;
+const formatMorse = (morse: string) => `${decodeMorse(morse)} | ${morse === "" ? "?" : morse === "*" ? "█" : morse.replaceAll("*", "")}`;
 ---
 
 <Layout title="Digital Encrypted Message Archive">
