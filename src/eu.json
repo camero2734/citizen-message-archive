@@ -159,6 +159,14 @@
       "date": "2025-05-11",
       "location": "The AO Arena, Manchester, UK",
       "text": "Baldur,\n\nI'm happy to hear the movement has progressed, but I'm worried about your desire for Clancy to be more powerful than Nico. Is this what you wanted? Is this what any of us wanted? Nico's power is the element that has given Dema and Vialism such an iron fist. More power, even if it's Clancy's power, will corrupt the movement we've fought so hard to bring to Dema. [...]"
+    },
+    {
+      "number": "007",
+      "part": "BOTTOM",
+      "clue": ".",
+      "date": "2025-05-13",
+      "location": "The OVO Hydro, Glasgow, UK",
+      "text": "[...] of emotion as normal [...] just care. I think about it often who was he before he was a bishop? He had to have been a kid just like us at some point, right? He had to have been loose and wild at some point, right? Were they born this rigid or was it taught to them?\n\n-Wendt\n!![%.%]!!"
     }
   ],
   "letters": [
@@ -241,12 +249,13 @@
     {
       "number": 7,
       "pieces": [
-        "007A"
+        "007A",
+        "007B"
       ],
       "sender": "Wendt",
       "recipient": "Tari",
-      "decoded": "…",
-      "text": ""
+      "decoded": ".",
+      "text": "Tari,\n\nI found myself reminiscing about Bishop Nills last night. A long while back he actually rescued me from nearly falling back through a window while playing tug-o-war in class. He was there and he caught me. I looked up at him and the relief in his eyes that I was alright caught me so off-guard. In that moment he cared for me. He wasn't as devoid of emotion as normal. There was no tension - just care. I think about it often. Who was he before he was a bishop? He had to have been a kid just like us at some point, right? He had to have been loose and wild at some point, right? Were they born this rigid or was it taught to them?\n\n-Wendt\n!![%.%]!!"
     },
     {
       "number": 8,
