@@ -167,6 +167,13 @@
       "date": "2025-05-13",
       "location": "The O2 Arena, London, UK",
       "text": "[...] of emotion as normal [...] just care. I think about it often who was he before he was a bishop? He had to have been a kid just like us at some point, right? He had to have been loose and wild at some point, right? Were they born this rigid or was it taught to them?\n\n-Wendt\n!![%.%]!!"
+    },
+    {
+      "number": "011",
+      "clue": "....",
+      "date": "2025-05-14",
+      "location": "Somewhere",
+      "text": "TB,\n\nThe crown is heavy, but I can carry it. This city needs hope, and I alone can give it to them. But the city needs to feel powerful again, and snap out of the lifeless obedience they've been trapped in. I can give it to them. I gave them hope. I will be their example of absolute power. I feel alive again.\n\n-Clancy\n!![%....%]!!"
     }
   ],
   "letters": [
@@ -292,11 +299,13 @@
     },
     {
       "number": 11,
-      "pieces": [],
-      "sender": "???",
-      "recipient": "???",
-      "decoded": "",
-      "text": ""
+      "pieces": [
+        "011"
+      ],
+      "sender": "Clancy",
+      "recipient": "TB",
+      "decoded": "....",
+      "text": "TB,\n\nThe crown is heavy, but I can carry it. This city needs hope, and I alone can give it to them. But the city needs to feel powerful again, and snap out of the lifeless obedience they've been trapped in. I can give it to them. I gave them hope. I will be their example of absolute power. I feel alive again.\n\n-Clancy\n!![%....%]!!"
     }
   ]
 }
