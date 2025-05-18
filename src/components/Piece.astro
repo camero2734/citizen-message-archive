@@ -9,12 +9,13 @@ export interface Props {
 	clue: string;
 	number: string;
 	location: string;
+	url?: string;
 	uncertain?: boolean;
 
 	tourName: string;
 }
 
-const { text, date, clue, location, number, uncertain, tourName } = Astro.props;
+const { text, date, clue, location, number, uncertain, tourName, url } = Astro.props;
 const formattedDate = format(date, "'0'yy MM'MOON' dd");
 const normalDate = format(date, "dd MMMM yyyy");
 
@@ -28,7 +29,12 @@ const normalDate = format(date, "dd MMMM yyyy");
 		<p><span class="clue">{clue}</span></span></p>
 	</header>
 
-  <p class="location" slot="subheader">{location}</p>
+	{url ? (
+		<a href={url} class="url" target="_blank" rel="noopener noreferrer">
+			<p class="location" slot="subheader">{location}</p>
+		</a>
+	) : (<p class="location" slot="subheader">{location}</p>)}
+  
 
   <Clue clue={number} number={number} uncertain={uncertain} hideText={true} slot="image-overlay" />
 </Card>
@@ -69,6 +75,11 @@ const normalDate = format(date, "dd MMMM yyyy");
 		opacity: 0.5;
 		margin-bottom: 2em;
 		font-family: 'Courier New', monospace;
+	}
+
+	.url {
+		text-decoration: 1px solid underline #E6652F;
+		color: inherit;
 	}
 
   @media (max-width: 500px) {

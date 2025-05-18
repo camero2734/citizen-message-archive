@@ -4,7 +4,7 @@ import Clue from "../components/Clue.astro";
 import Layout from "../layouts/Layout.astro";
 import Letter from "../components/Letter.astro";
 
-import data from "../blurryface.json" assert { type: "json" };
+import data from "../eu.json" assert { type: "json" };
 
 // Create last updated date in format
 const lastUpdated = new Date().toLocaleString("en-GB", {
@@ -25,7 +25,8 @@ const cardData = pieces
 	.filter((piece) => !Number.isNaN(Number.parseInt(piece.number)))
 	.sort((a, b) => {
 		const numberComparison = Number.parseInt(a.number) - Number.parseInt(b.number);
-		return numberComparison;
+		if (numberComparison !== 0) return numberComparison;
+		return a.part === b.part ? 0 : a.part === "TOP" ? -1 : 1;
 	});
 
 const allClues: ((Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM"} ) | string)[] = [];
@@ -51,7 +52,7 @@ let lastEncodedNumber = -0.5;
 for (const card of cardData) {
 	if (!card.number || Number.isNaN(+card.number)) continue;
 	const number = +card.number;
-	const part = "TOP";
+	const part = card.part as "TOP" | "BOTTOM";
 
 	const encodedNumber = encodeNumber(number, part);
 
@@ -72,12 +73,22 @@ for (const card of cardData) {
 	lastEncodedNumber = encodedNumber;
 }
 
+// Remove pieces in letter
+const piecesInLetters = new Set<string>();
+for (const letter of data.letters) {
+	if (!letter.text) continue;
+	for (const piece of letter.pieces) piecesInLetters.add(piece);
+}
+
+console.log({ piecesInLetters });
+
 const clues = allClues.filter((c) => {
 	if (typeof c === "string") return !c.startsWith("000");
-  return true;
-	// const actualNumber = `${c.number}${partToSymbol(c.part)}`;
-	// return !piecesInLetters.has(actualNumber);
+	const actualNumber = `${c.number}${partToSymbol(c.part)}`;
+	return !piecesInLetters.has(actualNumber);
 });
+
+clues.push("011");
 
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 const lastLetter = data.letters.at(-1)!;
@@ -89,6 +100,51 @@ for (let i = 1; i < data.letters.length; i+=2) {
 	pairedLetters.push([letter, nextLetter]);
 }
 
+const morseCode = {
+	"A": ".-",
+	"B": "-...",
+	"C": "-.-.",
+	"D": "-..",
+	"E": ".",
+	"F": "..-.",
+	"G": "--.",
+	"H": "....",
+	"I": "..",
+	"J": ".---",
+	"K": "-.-",
+	"L": ".-..",
+	"M": "--",
+	"N": "-.",
+	"O": "---",
+	"P": ".--.",
+	"Q": "--.-",
+	"R": ".-.",
+	"S": "...",
+	"T": "-",
+	"U": "..-",
+	"V": "...-",
+	"W": ".--",
+	"X": "-..-",
+	"Y": "-.--",
+	"Z": "--..",
+	"*": "*",
+	" ": " ",
+}
+
+const encodeMorse = (char: string) => {
+	const morse = morseCode[char.toUpperCase() as keyof typeof morseCode];
+	if (!morse) return " ";
+	return morse;
+};
+const decodeMorse = (morse: string) => {
+	if (morse === "*") return "█";
+	const replaced = morse.replaceAll("*", "");
+	const entry = Object.entries(morseCode).find(([_, v]) => v === replaced);
+	if (!entry) return "?";
+	return entry[0];
+};
+
+const formatMorse = (morse: string) => `${decodeMorse(morse)} | ${morse === "" ? "?" : morse === "*" ? "█" : morse.replaceAll("*", "")}`;
 ---
 
 <Layout title="Digital Encrypted Message Archive">
@@ -106,11 +162,6 @@ for (let i = 1; i < data.letters.length; i+=2) {
 
 		</aside>
 
-    <a class="us-tour" href="/eu">
-			<p class="highlighted">BREACH</p>
-			<p>View the EU Tour letters</p>
-		</a>
-
 		<a class="us-tour" href="/us">
 			<p class="highlighted">WE MUST DESTROY THEM OR WE WILL BECOME THEM. AND IF WE BECOME THEM, WE MUST DO BETTER.</p>
 			<p>View the US Tour letters</p>
@@ -120,18 +171,14 @@ for (let i = 1; i < data.letters.length; i+=2) {
 
 
 		<header class="completed-letters-header">
-			<h2 class="list-heading" id="completed-letters">Collected Letters</h2>
-			<ol class="letter-list">
-				{data.pieces.map(piece => (
-					<li class="completed-letter">
-						<a href={`#${piece.number}`} class="completed-letter-link highlighted-a">
-							{piece.clue}
-						</a>
-					</li>
-				))}
-			</ol>
+			<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
+
+			<div class="checkbox-container">
+				<input id="show-letters" type="checkbox" id="show-letters" checked />
+				<label for="show-letters">Show Incomplete Letters</label>
+			</div>
 		</header>
-<!-- 
+
 		<ol class="letters">
 			<Letter
 						numbers={data.letters[0].pieces}
@@ -140,7 +187,7 @@ for (let i = 1; i < data.letters.length; i+=2) {
 						recipient={data.letters[0].recipient}
 						text={data.letters[0].text}
 						decoded={data.letters[0].decoded}
-						tourName="blurryface"
+						tourName="eu"
 					/>
 			{
 				pairedLetters.map(([l1, l2]) => (
@@ -158,7 +205,7 @@ for (let i = 1; i < data.letters.length; i+=2) {
 								recipient={l1.recipient}
 								text={l1.text}
 								decoded={formatMorse(l1.decoded)}
-								tourName="blurryface"
+								tourName="eu"
 							/>
 							<Letter
 								numbers={l2.pieces}
@@ -167,7 +214,7 @@ for (let i = 1; i < data.letters.length; i+=2) {
 								recipient={l2.recipient}
 								text={l2.text}
 								decoded={formatMorse(l2.decoded)}
-								tourName="blurryface"
+								tourName="eu"
 								/>
 							</div>
 					</div>
@@ -187,11 +234,11 @@ for (let i = 1; i < data.letters.length; i+=2) {
 						recipient={lastLetter.recipient}
 						text={lastLetter.text}
 						decoded={formatMorse(lastLetter.decoded)}
-						tourName="blurryface"
+						tourName="eu"
 					/>
 					</div>
 			</div>
-		</ol> -->
+		</ol>
 
 		<!-- <h2 class="list-heading" id="collected-clues" title="These are pieces that aren't in a completed letter">Remaining Pieces</h2>
 		<ol class="clues">
@@ -206,12 +253,12 @@ for (let i = 1; i < data.letters.length; i+=2) {
 			}
 		</ol> -->
 
-		<h2 class="list-heading" id="most-recent">Most recent posts</h2>
+		<h2 class="list-heading" id="most-recent">Most recent pieces</h2>
 		<ol class="list">
 			{
 				pieces
-					.sort((a, b) => +b.number - +a.number)
-					.map((card) => <Piece {...card} number={`${card.number}`} tourName="blurryface" />)
+					.sort((a, b) => b.date.getTime() - a.date.getTime())
+					.map((card) => <Piece {...card} number={`${card.number}${partToSymbol(card.part)}`} tourName="eu" />)
 			}
 		</ol>
 	</main>
@@ -242,21 +289,6 @@ for (let i = 1; i < data.letters.length; i+=2) {
 		background-position: 0%;
 	}
 
-	.letter-list {
-		list-style: none;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1em;
-		padding: 0;
-		margin: 0;
-		justify-self: start;
-
-		& a {
-			text-decoration: none;
-			color: inherit;
-		}
-	}
-
 	.clues {
 		list-style: none;
 		display: grid;
@@ -273,6 +305,12 @@ for (let i = 1; i < data.letters.length; i+=2) {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5em;
+	}
+
+	.completed-letters-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
 	}
 
 	.checkbox-container {
@@ -349,7 +387,7 @@ for (let i = 1; i < data.letters.length; i+=2) {
 
 	}
 
-	.us-tour .highlighted, .letter-pair .pair-decoded, .follow a, .highlighted-a {
+	.us-tour .highlighted, .letter-pair .pair-decoded, .follow a {
 		font-weight: bold;
 		font-family: 'Courier New', monospace;
 		color: white;
