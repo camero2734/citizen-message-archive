@@ -56,8 +56,8 @@ const imageModule = (await image()).default;
     <meta name="twitter:description" content={description} />
     
     <!-- Image metadata -->
-    <meta property="og:image" content={imageModule.src} />
-    <meta name="twitter:image" content={imageModule.src} />
+    <meta property="og:image" content={`${Astro.site}${imageModule.src}`} />
+    <meta name="twitter:image" content={`${Astro.site}${imageModule.src}`} />
     
     <!-- Redirect to the anchor URL -->
     <meta http-equiv="refresh" content={`0;url=${finalURL}`} />
