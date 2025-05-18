@@ -44,7 +44,7 @@ const normalizedUrl = new URL(imageModule.src, Astro.site);
 
 ---
 
-<Layout title={title}>
+<Layout title={title} image={normalizedUrl.toString()} description={description}>
   <head slot="head">
     <!-- OpenGraph Meta Tags -->
     <meta property="og:title" content={title} />
