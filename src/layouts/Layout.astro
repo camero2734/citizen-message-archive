@@ -1,20 +1,50 @@
 ---
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	url?: string;
+	type?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = "Welcome to the Digital Encrypted Message Archive, an unofficial archive of messages from citizens across Dema.",
+	image = "/favicon.png", 
+	url = Astro.url.pathname,
+	type = "website"
+} = Astro.props;
+
+// Construct absolute URLs for meta tags
+const canonicalURL = new URL(url, Astro.site);
+const imageURL = image.startsWith('http') ? image : new URL(image, Astro.site).href;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Welcome to the Digital Encrypted Message Archive, an unofficial archive of messages from citizens across Dema." />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- OpenGraph / Social Media Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:type" content={type} />
+		<meta property="og:image" content={imageURL} />
+		
+		<!-- Twitter Card Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+		
 		<title>{title}</title>
+		
+		<slot name="head" />
 	</head>
 	<body>
 		<slot />
