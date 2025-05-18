@@ -1,0 +1,73 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import blurryfaceData from "../../blurryface.json" assert { type: "json" };
+import { images } from "../../helpers/images";
+
+export const getStaticPaths = (() => {
+  const allPieces = [
+    ...blurryfaceData.pieces.map(piece => ({
+      ...piece, 
+      tour: "blurryface",
+      url: `/#${piece.number}`
+    }))
+  ];
+  
+  return allPieces.map(piece => ({
+    params: { id: piece.number },
+    props: { piece }
+  }));
+}) satisfies GetStaticPaths;
+
+const { piece } = Astro.props;
+
+// Construct a title and description for OpenGraph
+const title = `Blurryface Post #${piece.number} - ${piece.clue}`;
+let description = `Post on ${piece.location} on ${new Date(piece.date).toLocaleDateString()}`;
+if (piece.text) {
+  const plainText = piece.text.replace(/!!\[%(.*?)%\]!!/g, "$1");
+  description = plainText.substring(0, 150) + (plainText.length > 150 ? "..." : "");
+}
+
+// Construct the full URL for the canonical and OpenGraph URL
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const finalURL = new URL(piece.url, Astro.site);
+
+const image = images[`../images/${piece.tour}/${piece.number}.png`] || images[`../images/${piece.tour}/${piece.number}.jpg`] || images["../images/us/001.jpg"];
+if (!image) {
+	throw new Error(`Image not found for ${piece.tour}/${piece.number}`);
+}
+
+const imageModule = (await image()).default;
+
+---
+
+<Layout title={title}>
+  <head slot="head">
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="article" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Image metadata -->
+    <meta property="og:image" content={imageModule.src} />
+    <meta name="twitter:image" content={imageModule.src} />
+    
+    <!-- Redirect to the anchor URL -->
+    <meta http-equiv="refresh" content={`0;url=${finalURL}`} />
+    
+    <script is:inline define:vars={{ redirectURL: finalURL.toString() }}>
+      // JavaScript redirection as a fallback to ensure immediate redirect
+      window.location.href = redirectURL;
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to message...</p>
+  </body>
+</Layout>
