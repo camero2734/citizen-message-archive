@@ -1,8 +1,6 @@
 ---
 import Piece, { type Props as PieceProps } from "../components/Piece.astro";
-import Clue from "../components/Clue.astro";
 import Layout from "../layouts/Layout.astro";
-import Letter from "../components/Letter.astro";
 
 import data from "../blurryface.json" assert { type: "json" };
 
@@ -131,80 +129,6 @@ for (let i = 1; i < data.letters.length; i+=2) {
 				))}
 			</ol>
 		</header>
-<!-- 
-		<ol class="letters">
-			<Letter
-						numbers={data.letters[0].pieces}
-						page={data.letters[0].number}
-						sender={data.letters[0].sender}
-						recipient={data.letters[0].recipient}
-						text={data.letters[0].text}
-						decoded={data.letters[0].decoded}
-						tourName="blurryface"
-					/>
-			{
-				pairedLetters.map(([l1, l2]) => (
-					<div class="letter-pair" title="There is a prevailing theory that the final message is a combination of morse code from two letters.">
-						<div class="pair-decoded">
-								<div class="pair-decoded-container">
-									<span>{formatMorse(l1.decoded + l2.decoded)}</span>
-								</div>
-							</div>
-						<div class="letters">
-							<Letter
-								numbers={l1.pieces}
-								page={l1.number}
-								sender={l1.sender}
-								recipient={l1.recipient}
-								text={l1.text}
-								decoded={formatMorse(l1.decoded)}
-								tourName="blurryface"
-							/>
-							<Letter
-								numbers={l2.pieces}
-								page={l2.number}
-								sender={l2.sender}
-								recipient={l2.recipient}
-								text={l2.text}
-								decoded={formatMorse(l2.decoded)}
-								tourName="blurryface"
-								/>
-							</div>
-					</div>
-				))
-			}
-			<div class="letter-pair">
-				<div class="pair-decoded">
-						<div class="pair-decoded-container">
-							<span>{formatMorse(lastLetter.decoded)}</span>
-						</div>
-					</div>
-				<div class="letters">
-					<Letter
-						numbers={lastLetter.pieces}
-						page={lastLetter.number}
-						sender={lastLetter.sender}
-						recipient={lastLetter.recipient}
-						text={lastLetter.text}
-						decoded={formatMorse(lastLetter.decoded)}
-						tourName="blurryface"
-					/>
-					</div>
-			</div>
-		</ol> -->
-
-		<!-- <h2 class="list-heading" id="collected-clues" title="These are pieces that aren't in a completed letter">Remaining Pieces</h2>
-		<ol class="clues">
-			{
-				clues.map((clue) =>
-					typeof clue === "string" ? (
-						<li class="placeholder">{clue}</li>
-					) : (
-						<Clue clue={clue.clue} number={`${clue.number}${partToSymbol(clue.part)}`} />
-					),
-				)
-			}
-		</ol> -->
 
 		<h2 class="list-heading" id="most-recent">Most recent posts</h2>
 		<ol class="list">
