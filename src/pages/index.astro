@@ -119,6 +119,7 @@ for (let i = 1; i < data.letters.length; i+=2) {
 
 		<header class="completed-letters-header">
 			<h2 class="list-heading" id="completed-letters">Collected Letters</h2>
+			<p class="notice">Letters marked with ? are unclear, since they weren't ever edited out</p>
 			<ol class="letter-list">
 				{data.pieces.map(piece => (
 					<li class="completed-letter">
@@ -216,6 +217,7 @@ for (let i = 1; i < data.letters.length; i+=2) {
 		font-size: inherit;
 		color: #777;
 		padding-bottom: 0;
+		margin-bottom: 0;
 		padding-top: 1.5em;
 	}
 
@@ -254,6 +256,13 @@ for (let i = 1; i < data.letters.length; i+=2) {
 			0 0 2px rgb(var(--accent-light)),
 			0 0 4px rgb(var(--accent)),
 			0 0 6px rgb(var(--accent-dark));
+	}
+
+	.notice {
+		font-size: 0.75em;
+		color: #777;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 
 	.us-tour {
