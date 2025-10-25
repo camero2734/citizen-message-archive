@@ -75,6 +75,27 @@ const clues = allClues.filter((c) => {
 			</p>
 		</aside>
 
+		<a class="us-tour" href="/">
+			<p class="highlighted" style="font-style:italic">No message</p>
+			<p>View the Breach tour letters</p>
+		</a>
+
+		<a class="us-tour" href="/blurryface">
+			<p class="highlighted">THE CONTRACT</p>
+			<p>View the Blurryface Tweet letters</p>
+		</a>
+
+		<a class="us-tour" href="/eu">
+			<p class="highlighted">BREACH</p>
+			<p>View the EU Tour letters</p>
+		</a>
+
+		<p class="follow">
+			Follow us for live updates on Twitter <a
+				href="https://twitter.com/insidedema">@insidedema</a
+			>
+		</p>
+
 		<header class="completed-letters-header">
 			<h2 class="list-heading" id="completed-letters">Completed Letters</h2>
 
@@ -191,6 +212,41 @@ const clues = allClues.filter((c) => {
 		color: #777;
 		padding-bottom: 0;
 		padding-top: 1.5em;
+	}
+
+	.follow {
+		margin-top: 2em;
+		font-size: 0.75em;
+	}
+
+	.us-tour {
+		display: flex;
+		flex-direction: column;
+
+		margin-top: 1em;
+		text-decoration: none;
+
+		font-size: 0.75em;
+
+		p {
+			color: #777;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	.us-tour .highlighted,
+	.letter-pair .pair-decoded,
+	.follow a,
+	.highlighted-a {
+		font-weight: bold;
+		font-family: "Courier New", monospace;
+		color: white;
+
+		text-shadow:
+			0 0 4px rgb(var(--accent-light)),
+			0 0 8px rgb(var(--accent)),
+			0 0 12px rgb(var(--accent-dark));
 	}
 
 	.disclaimer {
