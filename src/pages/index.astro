@@ -2,7 +2,7 @@
 import Piece, { type Props as PieceProps } from "../components/Piece.astro";
 import Layout from "../layouts/Layout.astro";
 
-import data from "../blurryface.json" assert { type: "json" };
+import data from "../breach.json" assert { type: "json" };
 
 // Create last updated date in format
 const lastUpdated = new Date().toLocaleString("en-GB", {
@@ -22,11 +22,15 @@ const pieces = data.pieces.map((piece) => ({
 const cardData = pieces
 	.filter((piece) => !Number.isNaN(Number.parseInt(piece.number)))
 	.sort((a, b) => {
-		const numberComparison = Number.parseInt(a.number) - Number.parseInt(b.number);
+		const numberComparison =
+			Number.parseInt(a.number) - Number.parseInt(b.number);
 		return numberComparison;
 	});
 
-const allClues: ((Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM"} ) | string)[] = [];
+const allClues: (
+	| (Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM" })
+	| string
+)[] = [];
 
 const partToSymbol = (part?: string) => {
 	if (part === "TOP") return "A";
@@ -38,12 +42,15 @@ const encodeNumber = (number: number, part: "TOP" | "BOTTOM"): number => {
 	return number + (part === "TOP" ? 0 : 0.5);
 };
 
-const decodeNumber = (number: number): { number: number; part: "TOP" | "BOTTOM" } => {
+const decodeNumber = (
+	number: number,
+): { number: number; part: "TOP" | "BOTTOM" } => {
 	const part = number % 1 === 0 ? "TOP" : "BOTTOM";
 	return { number: Math.floor(number), part };
 };
 
-const formatNumber = (number: number, part?: "TOP" | "BOTTOM") => `${number.toString().padStart(3, "0")}${partToSymbol(part)}`;
+const formatNumber = (number: number, part?: "TOP" | "BOTTOM") =>
+	`${number.toString().padStart(3, "0")}${partToSymbol(part)}`;
 
 let lastEncodedNumber = -0.5;
 for (const card of cardData) {
@@ -57,7 +64,7 @@ for (const card of cardData) {
 		if (lastEncodedNumber + 0.5 === encodedNumber - 0.5) {
 			const decoded = decodeNumber(lastEncodedNumber + 0.5);
 			allClues.push(formatNumber(decoded.number, decoded.part));
-		}	else {
+		} else {
 			const startDecoded = decodeNumber(lastEncodedNumber + 0.5);
 			const endDecoded = decodeNumber(encodedNumber - 0.5);
 			allClues.push(
@@ -66,13 +73,15 @@ for (const card of cardData) {
 		}
 	}
 
-	allClues.push(card as Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM" });
+	allClues.push(
+		card as Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM" },
+	);
 	lastEncodedNumber = encodedNumber;
 }
 
 const clues = allClues.filter((c) => {
 	if (typeof c === "string") return !c.startsWith("000");
-  return true;
+	return true;
 	// const actualNumber = `${c.number}${partToSymbol(c.part)}`;
 	// return !piecesInLetters.has(actualNumber);
 });
@@ -80,13 +89,12 @@ const clues = allClues.filter((c) => {
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
 const lastLetter = data.letters.at(-1)!;
 const pairedLetters = [];
-for (let i = 1; i < data.letters.length; i+=2) {
+for (let i = 1; i < data.letters.length; i += 2) {
 	const letter = data.letters[i];
 	const nextLetter = data.letters[i + 1];
 	if (!nextLetter) continue;
 	pairedLetters.push([letter, nextLetter]);
 }
-
 ---
 
 <Layout title="Digital Encrypted Message Archive">
@@ -101,37 +109,48 @@ for (let i = 1; i < data.letters.length; i+=2) {
 			<p class="last-updated">
 				<b>{pieces.length} archived.</b> Last updated: {lastUpdated}
 			</p>
-
 		</aside>
 
-    <a class="us-tour" href="/eu">
+		<a class="us-tour" href="/eu">
+			<p class="highlighted">THE CONTRACT</p>
+			<p>View the Blurryface Tweet letters</p>
+		</a>
+
+		<a class="us-tour" href="/eu">
 			<p class="highlighted">BREACH</p>
 			<p>View the EU Tour letters</p>
 		</a>
 
 		<a class="us-tour" href="/us">
-			<p class="highlighted">WE MUST DESTROY THEM OR WE WILL BECOME THEM. AND IF WE BECOME THEM, WE MUST DO BETTER.</p>
+			<p class="highlighted">
+				WE MUST DESTROY THEM OR WE WILL BECOME THEM. AND IF WE BECOME THEM, WE
+				MUST DO BETTER.
+			</p>
 			<p>View the US Tour letters</p>
 		</a>
 
-		<p class="follow">Follow us for live updates on Twitter <a href="https://twitter.com/insidedema">@insidedema</a></p>
-
+		<p class="follow">
+			Follow us for live updates on Twitter <a
+				href="https://twitter.com/insidedema">@insidedema</a
+			>
+		</p>
 
 		<header class="completed-letters-header">
 			<h2 class="list-heading" id="completed-letters">Collected Letters</h2>
 			<ol class="letter-list">
-				{data.pieces.map(piece => (
-					<li class="completed-letter">
-						<a href={`#${piece.number}`} class="completed-letter-link highlighted-a">
-							{piece.clue}
-						</a>
-					</li>
-				))}
+				{
+					data.pieces.map((piece) => (
+						<li class="completed-letter">
+							<a
+								href={`#${piece.number}`}
+								class="completed-letter-link highlighted-a"
+							>
+								{piece.number}
+							</a>
+						</li>
+					))
+				}
 			</ol>
-			<h2 class="list-heading" id="decoded-letters">Decoded</h2>
-			<p class="highlighted-a">
-				T H E  C O N T R A C T
-			</p>
 		</header>
 
 		<h2 class="list-heading" id="most-recent">Most recent posts</h2>
@@ -139,7 +158,9 @@ for (let i = 1; i < data.letters.length; i+=2) {
 			{
 				pieces
 					.sort((a, b) => +b.number - +a.number)
-					.map((card) => <Piece {...card} number={`${card.number}`} tourName="blurryface" />)
+					.map((card) => (
+						<Piece {...card} number={`${card.number}`} tourName="breach" />
+					))
 			}
 		</ol>
 	</main>
@@ -282,15 +303,17 @@ for (let i = 1; i < data.letters.length; i+=2) {
 			margin-top: 0;
 			margin-bottom: 0;
 		}
-
 	}
 
-	.us-tour .highlighted, .letter-pair .pair-decoded, .follow a, .highlighted-a {
+	.us-tour .highlighted,
+	.letter-pair .pair-decoded,
+	.follow a,
+	.highlighted-a {
 		font-weight: bold;
-		font-family: 'Courier New', monospace;
+		font-family: "Courier New", monospace;
 		color: white;
 
-		text-shadow: 
+		text-shadow:
 			0 0 4px rgb(var(--accent-light)),
 			0 0 8px rgb(var(--accent)),
 			0 0 12px rgb(var(--accent-dark));

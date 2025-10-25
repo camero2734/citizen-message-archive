@@ -1,11 +1,10 @@
 ---
-import { format } from 'date-fns/format';
-import Card from './Card.astro';
-import ClueGroup from './ClueGroup.astro';
+import Card from "./Card.astro";
+import ClueGroup from "./ClueGroup.astro";
 
 export interface Props {
-	page: number;
-	numbers: string[];
+  page: number;
+  numbers: string[];
   text: string;
   decoded: string;
 
@@ -15,13 +14,18 @@ export interface Props {
   recipient: string;
 }
 
-const { page, numbers, text, sender, recipient, decoded, tourName } = Astro.props;
+const { page, numbers, text, sender, recipient, decoded, tourName } =
+  Astro.props;
 
 const pageImageName = `page-${page}`;
-
 ---
 
-<Card imageName={pageImageName} text={text} collapsible={true} tourName={tourName}>
+<Card
+  imageName={pageImageName}
+  text={text}
+  collapsible={true}
+  tourName={tourName}
+>
   <h2 slot="header">
     <span class="header-main">Letter {page}</span>
     -
@@ -45,7 +49,7 @@ const pageImageName = `page-${page}`;
     margin-bottom: 0.25em;
     margin-top: 0.75em;
 
-		font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
   }
 
   .header-main {
@@ -54,10 +58,10 @@ const pageImageName = `page-${page}`;
 
   .fromto {
     margin: 0;
-		font-size: 0.75em;
-		opacity: 0.5;
-		margin-bottom: 0.75em;
-		font-family: 'Courier New', monospace;
+    font-size: 0.75em;
+    opacity: 0.5;
+    margin-bottom: 0.75em;
+    font-family: "Courier New", monospace;
     font-style: italic;
   }
 
@@ -70,12 +74,12 @@ const pageImageName = `page-${page}`;
   }
 
   .highlighted {
-		font-weight: bold;
-		font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-family: "Courier New", monospace;
 
-		text-shadow: 
-			0 0 4px rgb(var(--accent-light)),
-			0 0 8px rgb(var(--accent)),
-			0 0 12px rgb(var(--accent-dark));
+    text-shadow:
+      0 0 4px rgb(var(--accent-light)),
+      0 0 8px rgb(var(--accent)),
+      0 0 12px rgb(var(--accent-dark));
   }
 </style>

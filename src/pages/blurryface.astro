@@ -1,0 +1,345 @@
+---
+import Piece, { type Props as PieceProps } from "../components/Piece.astro";
+import Layout from "../layouts/Layout.astro";
+
+import data from "../blurryface.json" assert { type: "json" };
+
+// Create last updated date in format
+const lastUpdated = new Date().toLocaleString("en-GB", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  timeZoneName: "short",
+});
+
+const pieces = data.pieces.map((piece) => ({
+  ...piece,
+  date: new Date(piece.date),
+}));
+const cardData = pieces
+  .filter((piece) => !Number.isNaN(Number.parseInt(piece.number)))
+  .sort((a, b) => {
+    const numberComparison =
+      Number.parseInt(a.number) - Number.parseInt(b.number);
+    return numberComparison;
+  });
+
+const allClues: (
+  | (Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM" })
+  | string
+)[] = [];
+
+const partToSymbol = (part?: string) => {
+  if (part === "TOP") return "A";
+  if (part === "BOTTOM") return "B";
+  return "";
+};
+
+const encodeNumber = (number: number, part: "TOP" | "BOTTOM"): number => {
+  return number + (part === "TOP" ? 0 : 0.5);
+};
+
+const decodeNumber = (
+  number: number,
+): { number: number; part: "TOP" | "BOTTOM" } => {
+  const part = number % 1 === 0 ? "TOP" : "BOTTOM";
+  return { number: Math.floor(number), part };
+};
+
+const formatNumber = (number: number, part?: "TOP" | "BOTTOM") =>
+  `${number.toString().padStart(3, "0")}${partToSymbol(part)}`;
+
+let lastEncodedNumber = -0.5;
+for (const card of cardData) {
+  if (!card.number || Number.isNaN(+card.number)) continue;
+  const number = +card.number;
+  const part = "TOP";
+
+  const encodedNumber = encodeNumber(number, part);
+
+  if (lastEncodedNumber + 0.5 !== encodedNumber) {
+    if (lastEncodedNumber + 0.5 === encodedNumber - 0.5) {
+      const decoded = decodeNumber(lastEncodedNumber + 0.5);
+      allClues.push(formatNumber(decoded.number, decoded.part));
+    } else {
+      const startDecoded = decodeNumber(lastEncodedNumber + 0.5);
+      const endDecoded = decodeNumber(encodedNumber - 0.5);
+      allClues.push(
+        `${formatNumber(startDecoded.number, startDecoded.part)}-${formatNumber(endDecoded.number, endDecoded.part)}`,
+      );
+    }
+  }
+
+  allClues.push(
+    card as Omit<PieceProps, "tourName"> & { part: "TOP" | "BOTTOM" },
+  );
+  lastEncodedNumber = encodedNumber;
+}
+
+const clues = allClues.filter((c) => {
+  if (typeof c === "string") return !c.startsWith("000");
+  return true;
+  // const actualNumber = `${c.number}${partToSymbol(c.part)}`;
+  // return !piecesInLetters.has(actualNumber);
+});
+
+// biome-ignore lint/style/noNonNullAssertion: <explanation>
+const lastLetter = data.letters.at(-1)!;
+const pairedLetters = [];
+for (let i = 1; i < data.letters.length; i += 2) {
+  const letter = data.letters[i];
+  const nextLetter = data.letters[i + 1];
+  if (!nextLetter) continue;
+  pairedLetters.push([letter, nextLetter]);
+}
+---
+
+<Layout title="Digital Encrypted Message Archive">
+  <main>
+    <h1>Citizen <span class="text-gradient">Message Archive</span></h1>
+    <aside class="disclaimer">
+      <p>
+        Welcome to the <span class="dema"
+          >Digital Encrypted Message Archive</span
+        >, an unofficial archive of messages from citizens across Dema.
+      </p>
+      <p class="last-updated">
+        <b>{pieces.length} archived.</b> Last updated: {lastUpdated}
+      </p>
+    </aside>
+
+    <a class="us-tour" href="/eu">
+      <p class="highlighted">BREACH</p>
+      <p>View the EU Tour letters</p>
+    </a>
+
+    <a class="us-tour" href="/us">
+      <p class="highlighted">
+        WE MUST DESTROY THEM OR WE WILL BECOME THEM. AND IF WE BECOME THEM, WE
+        MUST DO BETTER.
+      </p>
+      <p>View the US Tour letters</p>
+    </a>
+
+    <p class="follow">
+      Follow us for live updates on Twitter <a
+        href="https://twitter.com/insidedema">@insidedema</a>
+    </p>
+
+    <header class="completed-letters-header">
+      <h2 class="list-heading" id="completed-letters">Collected Letters</h2>
+      <ol class="letter-list">
+        {
+          data.pieces.map((piece) => (
+            <li class="completed-letter">
+              <a
+                href={`#${piece.number}`}
+                class="completed-letter-link highlighted-a"
+              >
+                {piece.clue}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      <h2 class="list-heading" id="decoded-letters">Decoded</h2>
+      <p class="highlighted-a">T H E C O N T R A C T</p>
+    </header>
+
+    <h2 class="list-heading" id="most-recent">Most recent posts</h2>
+    <ol class="list">
+      {
+        pieces
+          .sort((a, b) => +b.number - +a.number)
+          .map((card) => (
+            <Piece {...card} number={`${card.number}`} tourName="blurryface" />
+          ))
+      }
+    </ol>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+
+  .letter-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 0;
+    margin: 0;
+    justify-self: start;
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .clues {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+    justify-content: start;
+    gap: 2em 1em;
+    padding: 0;
+  }
+
+  .letters {
+    list-style: none;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .checkbox-container {
+    font-size: 0.75em;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .list-heading {
+    font-size: inherit;
+    color: #777;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    padding-top: 1.5em;
+  }
+
+  .disclaimer {
+    color: #777;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .disclaimer p {
+    max-width: 600px;
+    margin-bottom: 0;
+  }
+
+  .follow {
+    margin-top: 2em;
+    font-size: 0.75em;
+  }
+
+  .last-updated {
+    font-size: 0.8em;
+  }
+
+  .dema {
+    font-weight: bold;
+    color: #999;
+  }
+
+  .placeholder {
+    opacity: 0.25;
+    text-shadow:
+      0 0 2px rgb(var(--accent-light)),
+      0 0 4px rgb(var(--accent)),
+      0 0 6px rgb(var(--accent-dark));
+  }
+
+  .notice {
+    font-size: 0.75em;
+    color: #777;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .us-tour {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1em;
+    text-decoration: none;
+
+    font-size: 0.75em;
+
+    p {
+      color: #777;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .us-tour .highlighted,
+  .letter-pair .pair-decoded,
+  .follow a,
+  .highlighted-a {
+    font-weight: bold;
+    font-family: "Courier New", monospace;
+    color: white;
+
+    text-shadow:
+      0 0 4px rgb(var(--accent-light)),
+      0 0 8px rgb(var(--accent)),
+      0 0 12px rgb(var(--accent-dark));
+  }
+
+  .letter-pair .letters {
+    flex: 1;
+    gap: 0;
+  }
+
+  .letter-pair .pair-decoded {
+    min-width: 5ch;
+    padding-inline: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #23262d;
+    opacity: 0.7;
+    border-radius: 7px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 500px) {
+    .completed-letters-header {
+      flex-direction: column;
+    }
+
+    .clues {
+      font-size: 0.75em;
+    }
+  }
+</style>
